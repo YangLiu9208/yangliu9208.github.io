@@ -4,7 +4,7 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-resume/blob/master/LICENSE)
  */
 body {
-  font-family: 'Open+Sans', serif;
+  font-family: 'Saira+Extra+Condensed', serif;
   padding-top: 54px;
   color: #60686f; }
 
@@ -19,7 +19,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Open+Sans', serif;
+  font-family: 'Saira+Extra+Condensed', serif;
   font-weight: 800;
   text-transform: uppercase;
   color: #343a40; }
@@ -34,7 +34,7 @@ h2 {
 .subheading {
   text-transform: uppercase;
   font-weight: 600;
-  font-family: 'Open+Sans', serif;
+  font-family: 'Saira+Extra+Condensed', serif;
   font-size: 1.35rem; }
 
 .list-social-icons a {
