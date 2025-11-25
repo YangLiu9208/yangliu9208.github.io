@@ -35,12 +35,13 @@
             text-decoration: underline;
         }
 
-        /* Sidebar Styling - Modified Width */
+        /* --------------------------------------------------
+           Sidebar & Desktop Layout Styling 
+        -------------------------------------------------- */
         @media (min-width: 992px) {
             body {
                 padding-top: 0;
-                /* 修改处 1: 减小 body 左内边距以匹配导航栏宽度 */
-                padding-left: 13.5rem; 
+                padding-left: 13.5rem; /* Match Sidebar Width */
             }
 
             .navbar {
@@ -49,8 +50,7 @@
                 left: 0;
                 display: flex;
                 flex-direction: column;
-                /* 修改处 2: 减小导航栏宽度 (原 17rem) */
-                width: 13.5rem; 
+                width: 13.5rem; /* Fixed Sidebar Width */
                 height: 100vh;
                 background-color: #bd5d38; 
                 text-align: center;
@@ -61,7 +61,6 @@
             }
 
             .navbar .navbar-brand .img-profile {
-                /* 修改处 3: 稍微缩小头像尺寸以适应变窄的侧边栏 */
                 max-width: 8.5rem;
                 max-height: 8.5rem;
                 border: 0.4rem solid rgba(255, 255, 255, 0.2);
@@ -77,13 +76,19 @@
                 text-transform: uppercase;
                 font-weight: 700;
                 letter-spacing: 0.05rem;
-                padding: 0.6rem 0; /* 稍微减小垂直间距 */
+                padding: 0.6rem 0;
                 color: rgba(255, 255, 255, 0.7) !important;
-                font-size: 0.95rem; /* 稍微减小字号防止换行 */
+                font-size: 0.95rem;
             }
             
             .nav-link:hover, .nav-link.active {
                 color: #fff !important;
+            }
+
+            /* 修改核心：在桌面端大幅增加内容区域的内边距，使内容远离侧边栏 */
+            section.resume-section {
+                padding-left: 5rem !important; 
+                padding-right: 5rem !important;
             }
         }
 
@@ -98,11 +103,14 @@
             }
         }
 
-        /* Section Styling */
+        /* --------------------------------------------------
+           General Section Styling
+        -------------------------------------------------- */
         section.resume-section {
             padding-top: 3rem !important;
             padding-bottom: 3rem !important;
-            padding-left: 2rem;  /* 增加一点左侧内边距让内容不贴边 */
+            /* 移动端默认间距 */
+            padding-left: 2rem;  
             padding-right: 2rem;
             border-bottom: 1px solid #dee2e6;
             min-height: 100vh;
