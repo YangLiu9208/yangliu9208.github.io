@@ -21,7 +21,7 @@
         body {
             font-family: 'Roboto', sans-serif;
             color: #343a40;
-            padding-top: 56px; /* For mobile navbar */
+            padding-top: 56px; /* 移动端顶部导航高度占位 */
         }
 
         a {
@@ -36,12 +36,12 @@
         }
 
         /* --------------------------------------------------
-           Sidebar & Desktop Layout Styling 
+           桌面端侧边栏核心布局 (大屏幕)
         -------------------------------------------------- */
         @media (min-width: 992px) {
             body {
                 padding-top: 0;
-                padding-left: 15rem; /* Match Sidebar Width */
+                padding-left: 17rem; /* 给右侧内容预留空间 */
             }
 
             .navbar {
@@ -49,25 +49,37 @@
                 top: 0;
                 left: 0;
                 display: flex;
-                flex-direction: column;
-                width: 15rem; /* Adjusted Sidebar Width */
+                flex-direction: column; /* 导航栏整体纵向 */
+                width: 17rem; /* 固定宽度 */
                 height: 100vh;
                 background-color: #bd5d38; 
                 text-align: center;
-                overflow-y: auto; /* Prevent overflow on small height screens */
+                overflow-y: auto; /* 防止屏幕过矮时内容被截断 */
+            }
+
+            .navbar .container-fluid {
+                display: flex;
+                flex-direction: column; /* 容器内部纵向 */
+                padding: 0;
+                height: 100%;
             }
 
             .navbar .navbar-brand {
-                margin: 0 0 1rem;
+                margin: 0;
+                padding: 2rem 0 1rem 0;
                 display: flex;
                 justify-content: center;
             }
 
             .navbar .navbar-brand .img-profile {
-                /* Larger Avatar */
+                /* 大头像设置 */
+                width: 10rem;
+                height: 10rem;
                 max-width: 10rem;
                 max-height: 10rem;
-                border: 0.3rem solid rgba(255, 255, 255, 0.2);
+                border: 0.5rem solid rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                object-fit: cover;
                 transition: transform 0.3s;
             }
             
@@ -75,25 +87,36 @@
                 transform: scale(1.05);
             }
 
-            .navbar-nav {
-                width: 100%;
-                margin-top: auto;
-                margin-bottom: auto;
-                padding-bottom: 2rem; /* Bottom spacing */
-            }
-            
-            .nav-item {
+            /* 强制覆盖 Bootstrap 的横向排列，确保菜单项垂直 */
+            .navbar-collapse {
+                display: flex !important;
+                flex-direction: column !important; 
+                flex-grow: 1; /* 让菜单占据剩余空间 */
+                align-items: center;
                 width: 100%;
             }
 
+            .navbar-nav {
+                flex-direction: column !important; /* 核心：强制纵向 */
+                width: 100%;
+                margin-bottom: auto; /* 顶对齐 */
+            }
+
+            .nav-item {
+                width: 100%;
+                display: block;
+            }
+
             .nav-link {
+                display: block;
+                text-align: center;
                 text-transform: uppercase;
                 font-weight: 700;
                 letter-spacing: 0.05rem;
-                padding: 0.75rem 0;
-                color: rgba(255, 255, 255, 0.7) !important;
-                font-size: 1rem;
-                display: block;
+                padding: 1rem 0; /* 增加点击区域高度 */
+                color: rgba(255, 255, 255, 0.8) !important;
+                font-size: 1.1rem; /* 字体大小 */
+                white-space: normal; /* 允许文字换行，防止超出 */
             }
             
             .nav-link:hover, .nav-link.active {
@@ -101,14 +124,16 @@
                 background-color: rgba(0,0,0,0.1);
             }
 
-            /* Content Padding */
+            /* 右侧内容区域内边距 */
             section.resume-section {
-                padding-left: 4rem !important; 
-                padding-right: 4rem !important;
+                padding-left: 3rem !important; 
+                padding-right: 3rem !important;
             }
         }
 
-        /* Mobile Navbar */
+        /* --------------------------------------------------
+           移动端样式 (小屏幕)
+        -------------------------------------------------- */
         @media (max-width: 991.98px) {
             .navbar {
                 background-color: #bd5d38; 
@@ -120,7 +145,7 @@
         }
 
         /* --------------------------------------------------
-           General Section Styling
+           通用板块样式
         -------------------------------------------------- */
         section.resume-section {
             padding-top: 3rem !important;
@@ -271,23 +296,25 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="sideNav">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">
-            <span class="d-block d-lg-none">Yang Liu</span>
-            <span class="d-none d-lg-block">
-                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="./img/YangLiu_2025.jpg" alt="Yang Liu Profile">
-            </span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Introduction</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#news">News</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#publications">Publications</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#demos">Demos</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#activities">Activities</a></li>
-            </ul>
+        <div class="container-fluid">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none">Yang Liu</span>
+                <span class="d-none d-lg-block">
+                    <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="./img/YangLiu_2025.jpg" alt="Yang Liu Profile">
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Introduction</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#news">News</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#publications">Publications</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#demos">Demos</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#activities">Activities</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
