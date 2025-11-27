@@ -237,7 +237,6 @@
             overflow-y: auto;
             background: #fff;
             padding: 25px;
-            /* Minimalist border instead of shadow */
             border: 1px solid #dee2e6; 
             border-radius: 4px;
         }
@@ -259,7 +258,7 @@
             font-weight: 700;
             color: var(--primary-color);
             margin-right: 8px;
-            font-family: 'Courier New', Courier, monospace; /* Monospace for dates looks technical */
+            font-family: 'Courier New', Courier, monospace; 
             font-size: 0.95rem;
         }
 
@@ -268,7 +267,6 @@
         -------------------------------------------------- */
         .pub-card {
             background: #fff;
-            /* Removed border, added subtle shadow for cleaner look */
             border: none;
             box-shadow: 0 2px 15px rgba(0,0,0,0.06);
             border-radius: 6px;
@@ -306,7 +304,7 @@
         }
 
         .pub-title {
-            font-size: 1.35rem; /* Larger title */
+            font-size: 1.35rem; 
             font-weight: 700;
             margin-bottom: 0.6rem;
             color: #111;
@@ -332,9 +330,8 @@
             font-style: italic;
         }
         
-        /* Updated Badge Colors to match Grey Theme */
         .badge {
-            font-family: 'Arial', sans-serif; /* Keep badges sans-serif for readability */
+            font-family: 'Arial', sans-serif;
             font-weight: 600;
             padding: 0.4em 0.6em;
         }
@@ -365,6 +362,14 @@
             border-color: #343a40;
             border-bottom: 1px solid #343a40;
             text-decoration: none;
+        }
+
+        .github-badges {
+            margin-top: 10px;
+        }
+        .github-badges img {
+            height: 20px;
+            margin-right: 5px;
         }
         
         .bibtex-box {
@@ -592,6 +597,9 @@
                                     <a href="https://item.jd.com/10100489294930.html" target="_blank"><i class="fas fa-shopping-cart"></i> JD.com</a>
                                     <a href="https://mp.weixin.qq.com/s/WHYy-dlJl6V4TQoZxWIiYQ" target="_blank"><i class="fab fa-weixin"></i> Media</a>
                                 </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/Book-of-MLM?style=social">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -612,6 +620,9 @@
                                 <p class="pub-venue">Springer, 2025.</p>
                                 <div class="pub-links">
                                     <a href="https://hcplab-sysu.github.io/Book-of-MLM/" target="_blank"><i class="fas fa-globe"></i> Resource</a>
+                                </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/Book-of-MLM?style=social">
                                 </div>
                             </div>
                         </div>
@@ -636,6 +647,10 @@
                                     <a href="https://github.com/HCPLab-SYSU/CausalVLR" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="https://arxiv.org/pdf/2306.17462.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="#bibCausal" data-bs-toggle="collapse" role="button" aria-expanded="false"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/CausalVLR?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/HCPLab-SYSU/CausalVLR?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibCausal">
 @article{CausalVLR,
@@ -670,6 +685,9 @@
                                     <a href="https://hcplab-sysu.github.io/3DAffordSplat/" target="_blank"><i class="fas fa-globe"></i> Project</a>
                                     <a href="#bib3DAffordSplat" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/3DAffordSplat?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bib3DAffordSplat">
 @article{3DAffordSplat,
   title={3DAffordSplat: Efficient Affordance Reasoning with 3D Gaussians},
@@ -699,6 +717,9 @@
                                     <a href="https://arxiv.org/pdf/2503.11117" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://hcplab-sysu.github.io/EXPRESS-Bench/" target="_blank"><i class="fas fa-globe"></i> Project</a>
                                     <a href="#bibEXPRESS" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/EXPRESS-Bench?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibEXPRESS">
 @inproceedings{EXPRESSBench,
@@ -730,6 +751,9 @@
                                     <a href="https://github.com/HCPLab-SYSU/Embodied_AI_Paper_List" target="_blank"><i class="fab fa-github"></i> Paper List</a>
                                     <a href="#bibEmbodiedSurvey" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/Embodied_AI_Paper_List?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibEmbodiedSurvey">
 @article{liu2024aligning,
   title={Aligning Cyber Space with Physical World: A Comprehensive Survey on Embodied AI},
@@ -759,6 +783,9 @@
                                     <a href="https://arxiv.org/pdf/2303.09117" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://github.com/WissingChen/VLCI" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibVLCI" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/WissingChen/VLCI?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibVLCI">
 @article{chen2025visual,
@@ -790,6 +817,9 @@
                                     <a href="https://github.com/KLatitude/ODMixer" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibODMixer" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/KLatitude/ODMixer?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibODMixer">
 @article{liu2024fine,
   title={ODMixer: Fine-grained Spatial-temporal MLP for Metro Origin-Destination Prediction},
@@ -819,6 +849,9 @@
                                     <a href="https://arxiv.org/pdf/2508.05186" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://hcplab-sysu.github.io/TAVP/" target="_blank"><i class="fas fa-globe"></i> Project</a>
                                     <a href="#bibTAVP" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/TAVP?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibTAVP">
 @misc{bai2025learningacttaskawareview,
@@ -881,6 +914,9 @@
                                     <a href="https://github.com/HCPLab-SYSU/DART" target="_blank"><i class="fab fa-github"></i> Project</a>
                                     <a href="#bibDART" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/DART?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibDART">
 @article{yin2025dart,
   title={DART: Differentiable Dynamic Adaptive Region Tokenizer for Vision Transformer and Mamba},
@@ -910,6 +946,9 @@
                                     <a href="https://arxiv.org/pdf/2412.09082" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://hcplab-sysu.github.io/LH-VLN" target="_blank"><i class="fas fa-globe"></i> Project</a>
                                     <a href="#bibLHVLN" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/LH-VLN?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibLHVLN">
 @inproceedings{song2024towards,
@@ -941,6 +980,9 @@
                                     <a href="https://github.com/LZ-CH/DSPNet" target="_blank"><i class="fab fa-github"></i> Project</a>
                                     <a href="#bibDSPNet" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/LZ-CH/DSPNet?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibDSPNet">
 @inproceedings{luo2025dspnet,
   title={DSPNet: Dual-vision Scene Perception for Robust 3D Question Answering},
@@ -970,6 +1012,9 @@
                                     <a href="https://arxiv.org/pdf/2503.07635" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://github.com/WissingChen/CRA-GQA" target="_blank"><i class="fab fa-github"></i> Project</a>
                                     <a href="#bibCRA" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/WissingChen/CRA-GQA?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibCRA">
 @inproceedings{chen2025cross,
@@ -1001,6 +1046,9 @@
                                     <a href="https://github.com/pzhren/InfiniteWorld" target="_blank"><i class="fab fa-github"></i> Project</a>
                                     <a href="#bibInfiniteWorld" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/pzhren/InfiniteWorld?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibInfiniteWorld">
 @article{ren2024infiniteworld,
   title={InfiniteWorld: A Unified Scalable Simulation Framework for General Visual-Language Robot Interaction},
@@ -1030,6 +1078,9 @@
                                     <a href="https://ieeexplore.ieee.org/document/10146482" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://github.com/HCPLab-SYSU/CMCIR" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibCMCIR" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/CMCIR?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibCMCIR">
 @article{liu2022cross,
@@ -1112,6 +1163,9 @@
                                     <a href="https://github.com/HCPLab-SYSU/CausalVLR" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibCausalGPT" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/CausalVLR?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibCausalGPT">
 @article{tang2023towards,
   title={Towards causalgpt: A multi-agent approach for faithful knowledge reasoning via promoting causal consistency in llms},
@@ -1141,6 +1195,9 @@
                                     <a href="https://arxiv.org/pdf/2305.04224.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://github.com/HCPLab-SYSU/CausalVLR" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibVCSR" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/CausalVLR?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibVCSR">
 @inproceedings{10.1145/3581783.3611873,
@@ -1172,6 +1229,9 @@
                                     <a href="https://github.com/HongYan1123/SkeletonMAE" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibSkeletonMAE" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HongYan1123/SkeletonMAE?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibSkeletonMAE">
 @inproceedings{yan2023skeletonmae,
   title={Skeletonmae: graph-based masked autoencoder for skeleton sequence pre-training},
@@ -1201,6 +1261,9 @@
                                     <a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Ma_Enhanced_Soft_Label_for_Semi-Supervised_Semantic_Segmentation_ICCV_2023_paper.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://github.com/unrealMJ/ESL" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibESL" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/unrealMJ/ESL?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibESL">
 @inproceedings{ma2023enhanced,
@@ -1232,6 +1295,9 @@
                                     <a href="https://github.com/junfanlin/DenseLight" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibDenseLight" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/junfanlin/DenseLight?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibDenseLight">
 @inproceedings{ijcai2023p672,
   title={DenseLight: Efficient Control for Large-scale Traffic Signals with Dense Feedback},
@@ -1261,6 +1327,9 @@
                                     <a href="https://ieeexplore.ieee.org/document/9785914" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://github.com/GillianZhu/HORLN" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibHORLN" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/GillianZhu/HORLN?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibHORLN">
 @article{zhu2022hybrid,
@@ -1321,6 +1390,9 @@
                                     <a href="https://github.com/lonelyhope/DADA" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibDADA" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/lonelyhope/DADA?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibDADA">
 @inproceedings{xu2022dual,
   title={Dual adversarial adaptation for cross-device real-world image super-resolution},
@@ -1351,6 +1423,9 @@
                                     <a href="https://youtu.be/2lfNaTkcTHI" target="_blank"><i class="fab fa-youtube"></i> Video</a>
                                     <a href="https://mp.weixin.qq.com/s/-OlJ44DWE6nuX_OVyykURw" target="_blank"><i class="fab fa-weixin"></i> Interpretation</a>
                                     <a href="#bibMIR" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/YangLiu9208/MIR?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibMIR">
 @article{liu2022causal,
@@ -1411,6 +1486,9 @@
                                     <a href="https://github.com/YangLiu9208/TCGL/" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibTCGL" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/YangLiu9208/TCGL?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibTCGL">
 @article{liu2022tcgl,
   title={TCGL: Temporal Contrastive Graph for Self-Supervised Video Representation Learning},
@@ -1440,6 +1518,9 @@
                                     <a href="https://ieeexplore.ieee.org/document/9451581" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://github.com/YangLiu9208/SAKDN" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibSAKDN" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/YangLiu9208/SAKDN?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibSAKDN">
 @article{liu2021semantics,
@@ -1471,6 +1552,9 @@
                                     <a href="https://yangliu9208.github.io/DIVAFN/" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibDIVAFN" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/YangLiu9208/DIVAFN?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibDIVAFN">
 @article{liu2019deep,
   title={Deep image-to-video adaptation and fusion networks for action recognition},
@@ -1501,6 +1585,9 @@
                                     <a href="https://github.com/YangLiu9208/JSRDA/" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibJSRDA" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/YangLiu9208/JSRDA?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibJSRDA">
 @article{liu2018hierarchically,
   title={Hierarchically learned view-invariant representations for cross-view action recognition},
@@ -1530,6 +1617,9 @@
                                     <a href="https://ieeexplore.ieee.org/document/8332532" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://yangliu9208.github.io/TSTDDs/" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibTSTDDs" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/YangLiu9208/TSTDDs?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibTSTDDs">
 @article{liu2018global,
@@ -1647,3 +1737,4 @@
 
 </body>
 </html>
+```
