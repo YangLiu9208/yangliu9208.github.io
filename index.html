@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Academic Homepage of Yang Liu">
     <meta name="author" content="Yang Liu">
-    <title>Yang Liu (刘阳) | Sun Yat-sen University</title>
+    <title>Yang Liu (刘阳) @ SYSU</title>
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,43 +14,40 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Academicons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            /* Changed from Orange to Academic Deep Blue/Navy */
-            --primary-color: #1a3b5d; 
-            --primary-hover: #122b46;
-            --secondary-bg: #f4f6f9;
-            --text-main: #222222;
-            --text-muted: #555555;
+            --primary-color: #bd5d38;
+            --primary-hover: #a34e2e;
+            --secondary-bg: #f8f9fa;
+            --text-main: #2d3436;
+            --text-muted: #636e72;
             --sidebar-width: 17rem;
             --transition-speed: 0.3s;
         }
 
         body {
-            /* Classic Serif Fonts for Academic Look */
-            font-family: 'Times New Roman', Times, Baskerville, Georgia, serif;
+            font-family: 'Inter', sans-serif;
             color: var(--text-main);
             background-color: #fff;
-            line-height: 1.6;
-            font-size: 1.05rem;
         }
 
         a {
             color: var(--primary-color);
             text-decoration: none;
-            transition: all var(--transition-speed);
+            transition: color var(--transition-speed);
         }
 
         a:hover {
             color: var(--primary-hover);
-            text-decoration: underline;
         }
 
         h1, h2, h3, h4, h5 {
-            font-family: 'Georgia', 'Times New Roman', serif;
+            font-family: 'Poppins', sans-serif;
             font-weight: 700;
-            color: #0f243a;
+            color: #2c3e50;
         }
 
         /* --------------------------------------------------
@@ -59,11 +56,11 @@
         .navbar-brand .img-profile {
             width: 10rem;
             height: 10rem;
-            border: 0.3rem solid rgba(255, 255, 255, 0.2);
+            border: 0.3rem solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             object-fit: cover;
             transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
 
         @media (min-width: 992px) {
@@ -80,8 +77,7 @@
                 flex-direction: column;
                 width: var(--sidebar-width);
                 height: 100vh;
-                /* Elegant Blue Gradient */
-                background: linear-gradient(180deg, #1a3b5d 0%, #0f243a 100%);
+                background: linear-gradient(180deg, #bd5d38 0%, #a34e2e 100%);
                 text-align: center;
                 box-shadow: 2px 0 10px rgba(0,0,0,0.1);
             }
@@ -99,6 +95,7 @@
 
             .navbar-brand .img-profile:hover {
                 transform: scale(1.05);
+                box-shadow: 0 15px 25px rgba(0,0,0,0.2);
             }
 
             .navbar-collapse {
@@ -116,136 +113,158 @@
 
             .nav-link {
                 padding: 1rem 2rem;
-                color: rgba(255, 255, 255, 0.75) !important;
-                font-family: 'Arial', sans-serif; /* Keep nav sans-serif for readability */
+                color: rgba(255, 255, 255, 0.85) !important;
                 font-weight: 600;
                 letter-spacing: 0.05rem;
                 text-transform: uppercase;
-                font-size: 0.9rem;
+                font-size: 0.95rem;
                 border-left: 4px solid transparent;
                 transition: all 0.2s ease-in-out;
             }
 
             .nav-link:hover, .nav-link.active {
                 color: #fff !important;
-                background-color: rgba(255,255,255,0.1);
+                background-color: rgba(0,0,0,0.1);
                 border-left: 4px solid #fff;
-                padding-left: 2.2rem;
-                text-decoration: none;
+                padding-left: 2.2rem; /* Slight shift effect */
             }
         }
 
         @media (max-width: 991.98px) {
             body { padding-top: 70px; }
             .navbar { background-color: var(--primary-color); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-            .img-profile { width: 3.5rem; height: 3.5rem; border: 2px solid rgba(255,255,255,0.3); }
+            .img-profile { width: 3rem; height: 3rem; border: 2px solid rgba(255,255,255,0.3); }
         }
 
         /* --------------------------------------------------
            Content Sections
         -------------------------------------------------- */
         section.resume-section {
-            padding: 4rem 3rem;
+            padding: 4rem 2rem;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid #eee;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2.5rem;
+            font-size: 3rem;
+            margin-bottom: 2rem;
             position: relative;
             display: inline-block;
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 10px;
+        }
+        
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            margin-top: 8px;
+            border-radius: 2px;
         }
 
         /* --------------------------------------------------
            About Section
         -------------------------------------------------- */
         .subheading {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
             text-transform: uppercase;
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-weight: 500;
+            font-size: 1.25rem;
             color: var(--primary-color);
             margin-bottom: 1.5rem;
-            letter-spacing: 1px;
         }
 
         .interest-tag {
-            background-color: #eef2f5;
-            color: #2c3e50;
-            padding: 5px 12px;
-            border-radius: 4px;
-            font-size: 0.95rem;
-            font-weight: 500;
+            background-color: rgba(189, 93, 56, 0.1);
+            color: var(--primary-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
-            margin-right: 5px;
             display: inline-block;
-            border: 1px solid #dde1e5;
+            transition: background 0.2s;
+        }
+        .interest-tag:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
         }
         
         .list-awards li {
-            margin-bottom: 8px;
-            padding-left: 5px;
+            margin-bottom: 10px;
+            position: relative;
         }
-        
+
         .social-icons a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            height: 3rem;
-            width: 3rem;
-            background-color: #2c3e50;
+            height: 3.5rem;
+            width: 3.5rem;
+            background-color: #2d3436;
             color: #fff !important;
             border-radius: 50%;
-            font-size: 1.3rem;
-            margin-right: 0.8rem;
-            transition: all 0.2s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy effect */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .social-icons a:hover {
             background-color: var(--primary-color);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(189, 93, 56, 0.3);
         }
 
         /* --------------------------------------------------
            News Section
         -------------------------------------------------- */
         .news-box {
-            max-height: 400px;
+            max-height: 450px;
             overflow-y: auto;
             background: #fff;
-            padding: 25px;
-            border: 1px solid #e9ecef;
-            border-left: 4px solid var(--primary-color);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid #f1f1f1;
         }
 
+        /* Custom Scrollbar */
+        .news-box::-webkit-scrollbar { width: 8px; }
+        .news-box::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+        .news-box::-webkit-scrollbar-thumb { background: #dcdcdc; border-radius: 4px; }
+        .news-box::-webkit-scrollbar-thumb:hover { background: #bd5d38; }
+
         .news-list li {
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             position: relative;
-            padding-left: 15px;
-            font-size: 1rem;
+            padding-left: 20px;
+            font-size: 0.95rem;
             line-height: 1.5;
         }
         .news-list li::before {
             content: '•';
             color: var(--primary-color);
+            font-size: 1.5rem;
             position: absolute;
             left: 0;
-            font-weight: bold;
+            top: -5px;
         }
         .news-date {
-            font-family: 'Courier New', monospace;
             font-weight: 700;
-            color: var(--primary-color);
-            margin-right: 8px;
-            font-size: 0.95rem;
+            color: #2c3e50;
+            margin-right: 5px;
+            font-family: monospace;
         }
 
         /* --------------------------------------------------
@@ -253,79 +272,89 @@
         -------------------------------------------------- */
         .pub-card {
             background: #fff;
-            border: none;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            transition: background-color 0.2s;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
         }
-        
-        /* Removed card shadow hover effect for a cleaner academic list look */
+
         .pub-card:hover {
-            background-color: #fcfcfc;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-color: transparent;
         }
 
         .pub-img-container {
             width: 100%;
-            border: 1px solid #eee;
-            padding: 2px;
-            background: #fff;
+            height: 100%;
+            min-height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+            overflow: hidden;
+            position: relative;
         }
 
         .pub-img {
             width: 100%;
             height: auto;
-            object-fit: contain;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .pub-card:hover .pub-img {
+            transform: scale(1.05);
         }
 
         .card-body {
-            padding: 0.5rem 1rem;
+            padding: 1.5rem;
         }
 
         .pub-title {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 700;
-            margin-bottom: 0.4rem;
-            color: #000;
-            line-height: 1.3;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            line-height: 1.4;
         }
 
         .pub-authors {
-            font-size: 1.05rem;
-            color: #444;
-            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 0.5rem;
         }
 
+        /* Highlight the author's name */
         .pub-authors b {
             color: #000;
-            border-bottom: 1px solid #000;
+            font-weight: 700;
+            border-bottom: 2px solid rgba(189, 93, 56, 0.3);
         }
 
         .pub-venue {
-            font-size: 1rem;
-            color: var(--primary-color);
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.8rem;
             font-style: italic;
-            font-weight: 600;
-            margin-bottom: 0.6rem;
+            font-weight: 500;
         }
         
-        .badge { font-family: 'Arial', sans-serif; font-weight: normal; }
-        .badge-hot { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; margin-left: 5px;}
-        .badge-oral { background-color: #d1e7dd; color: #0f5132; border: 1px solid #badbcc; margin-left: 5px;}
-        .badge-highlight { background-color: #cfe2ff; color: #084298; border: 1px solid #b6d4fe; margin-left: 5px;}
+        .badge-hot { background-color: #ffeaea; color: #d63031; border: 1px solid #fab1a0; margin-left: 5px;}
+        .badge-oral { background-color: #e3f2fd; color: #0984e3; border: 1px solid #74b9ff; margin-left: 5px;}
+        .badge-highlight { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; margin-left: 5px;}
 
         .pub-links a {
-            font-family: 'Arial', sans-serif;
             font-size: 0.8rem;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
-            padding: 3px 10px;
+            padding: 4px 12px;
             margin-right: 8px;
             margin-bottom: 5px;
-            border-radius: 4px; /* Squarer buttons */
+            border-radius: 30px;
             background-color: #fff;
-            border: 1px solid #ccc;
+            border: 1px solid #dee2e6;
             color: #555;
             text-transform: uppercase;
         }
@@ -336,16 +365,18 @@
             border-color: var(--primary-color);
             text-decoration: none;
         }
+        
+        .pub-links i { margin-right: 5px; }
 
         .bibtex-box {
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: #2d3436;
+            color: #dfe6e9;
             padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            margin-top: 10px;
-            font-family: 'Courier New', monospace;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            margin-top: 15px;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            border-left: 4px solid var(--primary-color);
             white-space: pre-wrap;
         }
         
@@ -355,25 +386,22 @@
         .service-card {
             background: #fff;
             padding: 1.5rem;
-            border: 1px solid #eee;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
             height: 100%;
         }
         .list-group-item {
             border: none;
-            padding: 0.4rem 0;
-            font-size: 1rem;
-            color: #444;
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
         }
         .badge-conf {
-            font-family: 'Arial', sans-serif;
-            background-color: #e9ecef;
-            color: #495057;
-            padding: 6px 10px;
-            font-size: 0.85rem;
-            border: 1px solid #ced4da;
-            margin-bottom: 5px;
-            display: inline-block;
+            font-weight: 500;
+            background-color: #f1f3f5;
+            color: #343a40;
+            border: 1px solid #dee2e6;
+            padding: 8px 12px;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -386,7 +414,6 @@
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
                 <span class="d-block d-lg-none">Yang Liu</span>
                 <span class="d-none d-lg-block">
-                    <!-- Updated Photo styling -->
                     <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="./img/YangLiu_2025.jpg" alt="Yang Liu Profile">
                 </span>
             </a>
@@ -395,7 +422,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Introduction</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#news">News</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#publications">Publications</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#activities">Activities</a></li>
@@ -410,66 +437,56 @@
         <!-- About Section -->
         <section class="resume-section" id="about">
             <div class="resume-section-content">
-                <h1 class="mb-0 display-4">Yang <span style="color: var(--primary-color);">Liu</span> <span class="text-muted h3" style="font-weight: normal; font-family: 'Times New Roman'">(刘阳)</span></h1>
+                <h1 class="mb-0 display-4 fw-bold">Yang <span style="color: var(--primary-color);">Liu</span> <span class="text-muted h3">(刘阳)</span></h1>
                 <div class="subheading mb-4">
-                    Associate Professor & Doctoral Supervisor @ Sun Yat-sen University (SYSU)
+                    Associate Professor @ Sun Yat-sen University (SYSU)
                 </div>
                 
                 <div class="row mb-5">
                     <div class="col-lg-8">
-                        <div class="mb-4">
-                            <p class="lead">
-                                I am currently an Associate Professor and Doctoral Supervisor at the <a href="http://www.sysu-hcp.net/" target="_blank" style="font-weight: bold; color: var(--primary-color);">Human-Cyber-Physical (HCP) Lab</a>, <a href="http://sdcs.sysu.edu.cn/" target="_blank">School of Computer Science and Engineering</a>, <a href="http://www.sysu.edu.cn/" target="_blank">Sun Yat-sen University</a>.
-                            </p>
-                            <p>
-                                I received my Ph.D. degree in Telecommunications and Information Systems from <strong>Xidian University</strong> in 2019, advised by Prof. Zhaoyang Lu. During my PhD, I was also a joint Ph.D. student at the <strong>University of East Anglia (UEA)</strong>, UK. Before my current position, I worked as a Research Fellow (Postdoc) at SYSU, collaborating with <a href="http://www.linliang.net/" target="_blank">Prof. Liang Lin</a>.
-                            </p>
-                            <p>
-                                My research interests primarily focus on <strong>Embodied AI</strong>, <strong>Computer Vision</strong>, and <strong>multimedia understanding</strong>. Specifically, I am interested in equipping intelligent agents with the ability to perceive, reason, and interact with the physical world through visual and linguistic modalities. This includes topics like robotic manipulation, causal inference in vision, and self-supervised learning.
-                            </p>
-                            
-                            <p class="text-secondary small mt-3">
-                                <i class="fas fa-envelope me-2"></i> liuy856@mail.sysu.edu.cn<br>
-                                <i class="fas fa-map-marker-alt me-2"></i> School of Computer Science and Engineering, SYSU, Guangzhou, China
-                            </p>
-
-                            <div class="mt-3">
-                                <a href="https://cse.sysu.edu.cn/teacher/LiuYang" target="_blank" class="btn btn-outline-dark btn-sm rounded-0"><i class="fas fa-globe"></i> Chinese Homepage (中文主页)</a>
-                            </div>
-                        </div>
-
-                        <div class="alert alert-light border shadow-sm" role="alert" style="border-left: 4px solid var(--primary-color) !important; background-color: #f8f9fa;">
-                            <h5 class="alert-heading h6 text-dark fw-bold"><i class="fas fa-bullhorn me-2 text-secondary"></i>Recruiting</h5>
-                            <p class="mb-0 small text-muted">I am looking for self-motivated <strong>Ph.D. students, Master students, RAs, and interns</strong>. Mathematics and coding skills are valued. Please drop me an email with your CV if you are interested in working with me.</p>
+                        <p class="lead mb-4 text-secondary">
+                            IEEE/ACM Member, CCF/CAAI/CSIG/CAA Member<br>
+                            <i class="fas fa-envelope me-2 text-primary-color"></i> liuy856@mail.sysu.edu.cn<br>
+                            <i class="fas fa-map-marker-alt me-2 text-primary-color"></i> School of Computer Science and Engineering, SYSU, Guangzhou, China
+                        </p>
+                        <p class="mb-4">
+                            I am currently an associate professor at <a href="http://www.sysu-hcp.net/" target="_blank" class="fw-bold">HCP Lab</a>, <a href="http://sdcs.sysu.edu.cn/" target="_blank">School of Computer Science and Engineering</a>, <a href="http://www.sysu.edu.cn/" target="_blank">Sun Yat-sen University</a>. 
+                            Previously, I worked as a research fellow with <a href="http://www.linliang.net/" target="_blank" class="fw-bold">Prof. Liang Lin</a>. 
+                            I obtained my Ph.D. degree from Xidian University in 2019. 
+                            <a href="https://cse.sysu.edu.cn/teacher/LiuYang" target="_blank" class="badge bg-secondary text-decoration-none ms-2"><i class="fas fa-language"></i> 中文版</a>
+                        </p>
+                        <div class="alert alert-light border-start border-4 border-warning shadow-sm" role="alert" style="border-color: var(--primary-color) !important;">
+                            <h5 class="alert-heading text-dark"><i class="fas fa-bullhorn me-2 text-warning"></i>Recruiting</h5>
+                            <p class="mb-0 small text-muted">Looking for self-motivated Masters, RAs, visiting students, and interns. Please drop me an email if interested.</p>
                         </div>
                     </div>
-                    <div class="col-lg-4 text-center d-flex flex-column align-items-center justify-content-center">
+                    <div class="col-lg-4 text-center d-flex align-items-center justify-content-center">
                         <!-- Visitor Map -->
-                        <div style="border: 1px solid #ddd; padding: 5px; background: #fff; margin-bottom: 20px;">
-                            <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=250&t=m&d=Ng_LP0UrQP5gWGJEym9UVNi8Up0eZ-cQXq9wH1Me7Bg"></script>
+                        <div style="transform: scale(0.9); border: 1px solid #eee; padding: 5px; border-radius: 8px;">
+                            <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=300&t=m&d=Ng_LP0UrQP5gWGJEym9UVNi8Up0eZ-cQXq9wH1Me7Bg"></script>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 mb-4">
-                        <h3 class="h4 mb-3" style="border-bottom: 1px solid #ddd; padding-bottom: 10px;">Research Interests</h3>
+                        <h3 class="h4 mb-3"><i class="fas fa-microscope me-2 text-secondary"></i>Research Interests</h3>
                         <div>
                             <span class="interest-tag"><i class="fas fa-robot me-1"></i> Embodied AI</span>
                             <span class="interest-tag"><i class="fas fa-hand-paper me-1"></i> Robotic Manipulation</span>
                             <span class="interest-tag"><i class="fas fa-eye me-1"></i> Computer Vision</span>
                             <span class="interest-tag"><i class="fas fa-brain me-1"></i> Causal Inference</span>
-                            <span class="interest-tag"><i class="fas fa-project-diagram me-1"></i> Visual Reasoning</span>
+                            <span class="interest-tag"><i class="fas fa-project-diagram me-1"></i> Self-supervised Learning</span>
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
-                        <h3 class="h4 mb-3" style="border-bottom: 1px solid #ddd; padding-bottom: 10px;">Selected Awards</h3>
-                        <ul class="fa-ul list-awards text-secondary">
-                            <li><span class="fa-li"><i class="fas fa-certificate text-dark"></i></span>Outstanding Teaching Achievement of Guangdong Province (2nd Prize), 2025</li>
-                            <li><span class="fa-li"><i class="fas fa-certificate text-dark"></i></span>Excellent Author of PHE, 2024</li>
-                            <li><span class="fa-li"><i class="fas fa-certificate text-dark"></i></span>CCF ChinaSoft 2023 Challenge (3rd Prize)</li>
-                            <li><span class="fa-li"><i class="fas fa-certificate text-dark"></i></span>3rd Guangdong Province Young CS Academic Show (1st Prize), 2023</li>
-                            <li><span class="fa-li"><i class="fas fa-certificate text-dark"></i></span>National Scholarship for PhD Students, 2018</li>
+                        <h3 class="h4 mb-3"><i class="fas fa-trophy me-2 text-secondary"></i>Selected Awards</h3>
+                        <ul class="fa-ul list-awards text-secondary small">
+                            <li><span class="fa-li"><i class="fas fa-award text-warning"></i></span>Outstanding Teaching Achievement of Guangdong Province (2nd Prize), 2025</li>
+                            <li><span class="fa-li"><i class="fas fa-award text-warning"></i></span>Excellent Author of PHE, 2024</li>
+                            <li><span class="fa-li"><i class="fas fa-award text-warning"></i></span>CCF ChinaSoft 2023 Challenge (3rd Prize)</li>
+                            <li><span class="fa-li"><i class="fas fa-award text-warning"></i></span>3rd Guangdong Province Young CS Academic Show (1st Prize), 2023</li>
+                            <li><span class="fa-li"><i class="fas fa-award text-warning"></i></span>National Scholarship for PhD Students, 2018</li>
                         </ul>
                     </div>
                 </div>
@@ -500,13 +517,13 @@
                         <li><span class="news-date">2025-11</span> One T-IP paper is selected as the <b>ESI Highly Cited Paper</b>!</li>
                         <li><span class="news-date">2025-09</span> Two papers are accepted by <b>NeurIPS 2025</b>!</li>
                         <li><span class="news-date">2025-08</span> One paper is accepted by <b>Neural Networks</b>!</li>
-                        <li><span class="news-date">2025-07</span> One paper is accepted by <b>ACM MM 2025</b> as <span class="badge badge-oral">Oral</span>!</li>
+                        <li><span class="news-date">2025-07</span> One paper is accepted by <b>ACM MM 2025</b> as <span class="badge badge-hot badge-pill">Oral</span>!</li>
                         <li><span class="news-date">2025-06</span> One paper is accepted by <b>ICCV 2025</b>!</li>
                         <li><span class="news-date">2025-06</span> One paper is accepted by <b>IEEE TKDE</b>!</li>
                         <li><span class="news-date">2025-05</span> Our Embodied AI Survey paper is accepted by <b>IEEE/ASME T-Mechatronics</b>!</li>
                         <li><span class="news-date">2025-05</span> One paper is accepted by <b>ACL 2025</b>!</li>
                         <li><span class="news-date">2025-05</span> Paper "Cross-Modal Causal Representation Learning..." accepted by <b>IEEE T-IP</b>!</li>
-                        <li><span class="news-date">2025-04</span> Our CRA-GQA is selected as <b>CVPR 2025</b> <span class="badge badge-highlight">Highlight</span>!</li>
+                        <li><span class="news-date">2025-04</span> Our CRA-GQA is selected as <b>CVPR 2025</b> <span class="badge badge-highlight text-dark">Highlight</span>!</li>
                         <li><span class="news-date">2025-02</span> Three papers are accepted by <b>CVPR 2025</b>!</li>
                         <li><span class="news-date">2024-07</span> We release the <a href="https://github.com/HCPLab-SYSU/Embodied_AI_Paper_List" target="_blank" class="fw-bold">paper list</a> for Embodied AI!</li>
                         <li><span class="news-date">2024-07</span> One paper is accepted by <b>ACM MM 2024</b>!</li>
@@ -534,25 +551,29 @@
                 <h2 class="mb-5">Publications</h2>
 
                 <!-- Books -->
-                <h3 class="mb-4 text-secondary h5 border-bottom pb-2">Books & Frameworks</h3>
+                <h3 class="mb-4 text-muted border-start border-4 border-primary ps-3">Books</h3>
                 
                 <!-- Book 1 -->
                 <div class="pub-card card">
                     <div class="row g-0 align-items-center">
-                        <div class="col-md-2 text-center p-3">
-                            <div class="pub-img-container border-0">
-                                <img src="img/PHE.jpg" class="pub-img shadow-sm" alt="Book Cover" style="max-height: 150px; width: auto;">
+                        <div class="col-md-3 text-center">
+                            <div class="pub-img-container">
+                                <img src="img/PHE.jpg" class="pub-img" alt="Book Cover">
                             </div>
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <div class="card-body">
                                 <h5 class="pub-title">Multimodal Large Models: The New Paradigm of Artificial General Intelligence</h5>
-                                <h6 class="card-subtitle mb-2 text-muted" style="font-family: serif;">《多模态大模型：新一代人工智能技术范式》</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">《多模态大模型：新一代人工智能技术范式》</h6>
                                 <p class="pub-authors"><b>Yang Liu</b>, Liang Lin</p>
-                                <p class="pub-venue">Publishing House of Electronics Industry (PHE), 2024. <span class="badge bg-secondary">Textbook Series</span></p>
+                                <p class="pub-venue">Publishing House of Electronics Industry (PHE), 2024. <span class="badge bg-success">Textbook Series</span></p>
                                 <div class="pub-links">
                                     <a href="https://hcplab-sysu.github.io/Book-of-MLM/" target="_blank"><i class="fas fa-globe"></i> Resource</a>
                                     <a href="https://item.jd.com/10100489294930.html" target="_blank"><i class="fas fa-shopping-cart"></i> JD.com</a>
+                                    <a href="https://mp.weixin.qq.com/s/WHYy-dlJl6V4TQoZxWIiYQ" target="_blank"><i class="fab fa-weixin"></i> Media</a>
+                                </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/Book-of-MLM?style=social">
                                 </div>
                             </div>
                         </div>
@@ -562,12 +583,12 @@
                 <!-- Book 2 -->
                 <div class="pub-card card">
                     <div class="row g-0 align-items-center">
-                        <div class="col-md-2 text-center p-3">
-                            <div class="pub-img-container border-0">
-                                <img src="img/PHE-ENG.png" class="pub-img shadow-sm" alt="Book Cover" style="max-height: 150px; width: auto;">
+                        <div class="col-md-3 text-center">
+                            <div class="pub-img-container">
+                                <img src="img/PHE-ENG.png" class="pub-img" alt="Book Cover">
                             </div>
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <div class="card-body">
                                 <h5 class="pub-title">Multimodal Large Models: The New Paradigm of Artificial Intelligence</h5>
                                 <p class="pub-authors">Liang Lin, <b>Yang Liu</b></p>
@@ -575,35 +596,51 @@
                                 <div class="pub-links">
                                     <a href="https://hcplab-sysu.github.io/Book-of-MLM/" target="_blank"><i class="fas fa-globe"></i> Resource</a>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Open Source Framework -->
-                <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-2 text-center p-3">
-                            <div class="pub-img-container border-0">
-                                <img src="img/CausalVLR.gif" class="pub-img shadow-sm" alt="Framework Demo" style="max-height: 120px; width: auto;">
-                            </div>
-                        </div>
-                        <div class="col-md-10">
-                            <div class="card-body">
-                                <h5 class="pub-title">CausalVLR: A Toolbox and Benchmark for Visual-Linguistic Causal Reasoning</h5>
-                                <p class="pub-authors"><b>Yang Liu</b>, Weixing Chen, Guanbin Li, Liang Lin</p>
-                                <p class="card-text text-muted small mb-2 fst-italic">CausalVLR is a python open-source framework for causal relation discovery and inference.</p>
-                                <div class="pub-links">
-                                    <a href="https://github.com/HCPLab-SYSU/CausalVLR" target="_blank"><i class="fab fa-github"></i> Code</a>
-                                    <a href="https://arxiv.org/pdf/2306.17462.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/Book-of-MLM?style=social">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Open Source Framework -->
+                <h3 class="mb-4 mt-5 text-muted border-start border-4 border-primary ps-3">Open-source Framework</h3>
+                <div class="pub-card card">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-md-3 text-center">
+                            <div class="pub-img-container">
+                                <img src="img/CausalVLR.gif" class="pub-img" alt="Framework Demo">
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h5 class="pub-title">CausalVLR: A Toolbox and Benchmark for Visual-Linguistic Causal Reasoning</h5>
+                                <p class="pub-authors"><b>Yang Liu</b>, Weixing Chen, Guanbin Li, Liang Lin</p>
+                                <p class="card-text text-muted small mb-2">CausalVLR is a python open-source framework for causal relation discovery and inference, implementing SOTA causality learning algorithms for various visual-linguistic reasoning tasks.</p>
+                                <div class="pub-links">
+                                    <a href="https://github.com/HCPLab-SYSU/CausalVLR" target="_blank"><i class="fab fa-github"></i> Code</a>
+                                    <a href="https://arxiv.org/pdf/2306.17462.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
+                                    <a href="#bibCausal" data-bs-toggle="collapse" role="button" aria-expanded="false"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/CausalVLR?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/HCPLab-SYSU/CausalVLR?style=social">
+                                </div>
+                                <div class="collapse bibtex-box" id="bibCausal">
+@article{CausalVLR,
+  title={CausalVLR: A Toolbox and Benchmark for Visual-Linguistic Causal Reasoning},
+  author={Liu, Yang and Chen, Weixing and Li, Guanbin and Lin, Liang},
+  journal={arXiv preprint arXiv:2306.17462},
+  year={2023}
+}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Papers List -->
-                <h3 class="mb-4 mt-5 text-secondary h5 border-bottom pb-2">Selected Papers</h3>
+                <h3 class="mb-4 mt-5 text-muted border-start border-4 border-primary ps-3">Selected Papers</h3>
 
                 <!-- Paper: 3DAffordSplat -->
                 <div class="pub-card card">
@@ -622,6 +659,9 @@
                                     <a href="https://arxiv.org/pdf/2504.11218" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://hcplab-sysu.github.io/3DAffordSplat/" target="_blank"><i class="fas fa-globe"></i> Project</a>
                                     <a href="#bib3DAffordSplat" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/3DAffordSplat?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bib3DAffordSplat">
 @article{3DAffordSplat,
@@ -653,6 +693,9 @@
                                     <a href="https://hcplab-sysu.github.io/EXPRESS-Bench/" target="_blank"><i class="fas fa-globe"></i> Project</a>
                                     <a href="#bibEXPRESS" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/EXPRESS-Bench?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibEXPRESS">
 @inproceedings{EXPRESSBench,
   title={Beyond the Destination: A Novel Benchmark for Exploration-Aware Embodied Question Answering},
@@ -682,6 +725,9 @@
                                     <a href="https://arxiv.org/pdf/2407.06886" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://github.com/HCPLab-SYSU/Embodied_AI_Paper_List" target="_blank"><i class="fab fa-github"></i> Paper List</a>
                                     <a href="#bibEmbodiedSurvey" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/Embodied_AI_Paper_List?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibEmbodiedSurvey">
 @article{liu2024aligning,
@@ -713,6 +759,9 @@
                                     <a href="https://github.com/WissingChen/VLCI" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibVLCI" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/WissingChen/VLCI?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibVLCI">
 @article{chen2025visual,
   title={Cross-Modal Causal Representation Learning for Radiology Report Generation},
@@ -743,6 +792,9 @@
                                     <a href="https://github.com/KLatitude/ODMixer" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibODMixer" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/KLatitude/ODMixer?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibODMixer">
 @article{liu2024fine,
   title={ODMixer: Fine-grained Spatial-temporal MLP for Metro Origin-Destination Prediction},
@@ -772,6 +824,9 @@
                                     <a href="https://arxiv.org/pdf/2508.05186" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://hcplab-sysu.github.io/TAVP/" target="_blank"><i class="fas fa-globe"></i> Project</a>
                                     <a href="#bibTAVP" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/TAVP?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibTAVP">
 @misc{bai2025learningacttaskawareview,
@@ -834,6 +889,9 @@
                                     <a href="https://github.com/HCPLab-SYSU/DART" target="_blank"><i class="fab fa-github"></i> Project</a>
                                     <a href="#bibDART" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/DART?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibDART">
 @article{yin2025dart,
   title={DART: Differentiable Dynamic Adaptive Region Tokenizer for Vision Transformer and Mamba},
@@ -863,6 +921,9 @@
                                     <a href="https://arxiv.org/pdf/2412.09082" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://hcplab-sysu.github.io/LH-VLN" target="_blank"><i class="fas fa-globe"></i> Project</a>
                                     <a href="#bibLHVLN" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/LH-VLN?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibLHVLN">
 @inproceedings{song2024towards,
@@ -894,6 +955,9 @@
                                     <a href="https://github.com/LZ-CH/DSPNet" target="_blank"><i class="fab fa-github"></i> Project</a>
                                     <a href="#bibDSPNet" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/LZ-CH/DSPNet?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibDSPNet">
 @inproceedings{luo2025dspnet,
   title={DSPNet: Dual-vision Scene Perception for Robust 3D Question Answering},
@@ -923,6 +987,9 @@
                                     <a href="https://arxiv.org/pdf/2503.07635" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://github.com/WissingChen/CRA-GQA" target="_blank"><i class="fab fa-github"></i> Project</a>
                                     <a href="#bibCRA" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/WissingChen/CRA-GQA?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibCRA">
 @inproceedings{chen2025cross,
@@ -954,6 +1021,9 @@
                                     <a href="https://github.com/pzhren/InfiniteWorld" target="_blank"><i class="fab fa-github"></i> Project</a>
                                     <a href="#bibInfiniteWorld" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/pzhren/InfiniteWorld?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibInfiniteWorld">
 @article{ren2024infiniteworld,
   title={InfiniteWorld: A Unified Scalable Simulation Framework for General Visual-Language Robot Interaction},
@@ -983,6 +1053,9 @@
                                     <a href="https://ieeexplore.ieee.org/document/10146482" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://github.com/HCPLab-SYSU/CMCIR" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibCMCIR" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/CMCIR?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibCMCIR">
 @article{liu2022cross,
@@ -1065,6 +1138,9 @@
                                     <a href="https://github.com/HCPLab-SYSU/CausalVLR" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibCausalGPT" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/CausalVLR?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibCausalGPT">
 @article{tang2023towards,
   title={Towards causalgpt: A multi-agent approach for faithful knowledge reasoning via promoting causal consistency in llms},
@@ -1094,6 +1170,9 @@
                                     <a href="https://arxiv.org/pdf/2305.04224.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://github.com/HCPLab-SYSU/CausalVLR" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibVCSR" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/CausalVLR?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibVCSR">
 @inproceedings{10.1145/3581783.3611873,
@@ -1125,6 +1204,9 @@
                                     <a href="https://github.com/HongYan1123/SkeletonMAE" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibSkeletonMAE" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HongYan1123/SkeletonMAE?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibSkeletonMAE">
 @inproceedings{yan2023skeletonmae,
   title={Skeletonmae: graph-based masked autoencoder for skeleton sequence pre-training},
@@ -1154,6 +1236,9 @@
                                     <a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Ma_Enhanced_Soft_Label_for_Semi-Supervised_Semantic_Segmentation_ICCV_2023_paper.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://github.com/unrealMJ/ESL" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibESL" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/unrealMJ/ESL?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibESL">
 @inproceedings{ma2023enhanced,
@@ -1185,6 +1270,9 @@
                                     <a href="https://github.com/junfanlin/DenseLight" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibDenseLight" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/junfanlin/DenseLight?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibDenseLight">
 @inproceedings{ijcai2023p672,
   title={DenseLight: Efficient Control for Large-scale Traffic Signals with Dense Feedback},
@@ -1214,6 +1302,9 @@
                                     <a href="https://ieeexplore.ieee.org/document/9785914" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://github.com/GillianZhu/HORLN" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibHORLN" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/GillianZhu/HORLN?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibHORLN">
 @article{zhu2022hybrid,
@@ -1274,6 +1365,9 @@
                                     <a href="https://github.com/lonelyhope/DADA" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibDADA" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/lonelyhope/DADA?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibDADA">
 @inproceedings{xu2022dual,
   title={Dual adversarial adaptation for cross-device real-world image super-resolution},
@@ -1304,6 +1398,9 @@
                                     <a href="https://youtu.be/2lfNaTkcTHI" target="_blank"><i class="fab fa-youtube"></i> Video</a>
                                     <a href="https://mp.weixin.qq.com/s/-OlJ44DWE6nuX_OVyykURw" target="_blank"><i class="fab fa-weixin"></i> Interpretation</a>
                                     <a href="#bibMIR" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/YangLiu9208/MIR?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibMIR">
 @article{liu2022causal,
@@ -1364,6 +1461,9 @@
                                     <a href="https://github.com/YangLiu9208/TCGL/" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibTCGL" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/YangLiu9208/TCGL?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibTCGL">
 @article{liu2022tcgl,
   title={TCGL: Temporal Contrastive Graph for Self-Supervised Video Representation Learning},
@@ -1393,6 +1493,9 @@
                                     <a href="https://ieeexplore.ieee.org/document/9451581" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://github.com/YangLiu9208/SAKDN" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibSAKDN" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/YangLiu9208/SAKDN?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibSAKDN">
 @article{liu2021semantics,
@@ -1424,6 +1527,9 @@
                                     <a href="https://yangliu9208.github.io/DIVAFN/" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibDIVAFN" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/YangLiu9208/DIVAFN?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibDIVAFN">
 @article{liu2019deep,
   title={Deep image-to-video adaptation and fusion networks for action recognition},
@@ -1453,6 +1559,9 @@
                                     <a href="https://ieeexplore.ieee.org/document/8453034" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://github.com/YangLiu9208/JSRDA/" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibJSRDA" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/YangLiu9208/JSRDA?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibJSRDA">
 @article{liu2018hierarchically,
@@ -1484,6 +1593,9 @@
                                     <a href="https://yangliu9208.github.io/TSTDDs/" target="_blank"><i class="fab fa-github"></i> Code</a>
                                     <a href="#bibTSTDDs" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
+                                <div class="github-badges mt-2">
+                                    <img alt="GitHub stars" src="https://img.shields.io/github/stars/YangLiu9208/TSTDDs?style=social">
+                                </div>
                                 <div class="collapse bibtex-box" id="bibTSTDDs">
 @article{liu2018global,
   title={Global temporal representation based cnns for infrared action recognition},
@@ -1497,7 +1609,7 @@
                 </div>
 
                 <!-- PhD Thesis -->
-                <h3 class="mb-4 mt-5 text-secondary h5 border-bottom pb-2">PhD Dissertation</h3>
+                <h3 class="mb-4 mt-5 text-muted border-start border-4 border-primary ps-3">PhD Dissertation</h3>
                 <div class="pub-card card">
                     <div class="row g-0 align-items-center">
                         <div class="col-md-3 text-center">
@@ -1536,25 +1648,25 @@
                 <div class="row g-4">
                     <div class="col-md-6">
                         <div class="service-card">
-                            <h4 class="h5 mb-3 border-bottom pb-2" style="color: var(--primary-color);">Reviewer for Journals</h4>
+                            <h4 class="h5 mb-3 border-bottom pb-2 text-primary">Reviewer for Journals</h4>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-secondary me-2"></i> IEEE Trans. on Pattern Analysis and Machine Intelligence (TPAMI)</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-secondary me-2"></i> IEEE Trans. on Image Processing (TIP)</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-secondary me-2"></i> IEEE Trans. on Neural Networks and Learning Systems (TNNLS)</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-secondary me-2"></i> IEEE Trans. on Cybernetics</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-secondary me-2"></i> International Journal of Computer Vision (IJCV)</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-secondary me-2"></i> ACM Trans. on Multimedia Computing Comm. and Applications</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-secondary me-2"></i> Pattern Recognition (PR)</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-secondary me-2"></i> Neural Networks</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-secondary me-2"></i> Information Fusion</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-secondary me-2"></i> Advanced Science</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-success me-2"></i> IEEE Trans. on Pattern Analysis and Machine Intelligence (TPAMI)</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-success me-2"></i> IEEE Trans. on Image Processing (TIP)</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-success me-2"></i> IEEE Trans. on Neural Networks and Learning Systems (TNNLS)</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-success me-2"></i> IEEE Trans. on Cybernetics</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-success me-2"></i> International Journal of Computer Vision (IJCV)</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-success me-2"></i> ACM Trans. on Multimedia Computing Comm. and Applications</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-success me-2"></i> Pattern Recognition (PR)</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-success me-2"></i> Neural Networks</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-success me-2"></i> Information Fusion</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-success me-2"></i> Advanced Science</li>
                             </ul>
                         </div>
                     </div>
                     
                     <div class="col-md-6">
                         <div class="service-card">
-                            <h4 class="h5 mb-3 border-bottom pb-2" style="color: var(--primary-color);">PC Member / Reviewer for Conferences</h4>
+                            <h4 class="h5 mb-3 border-bottom pb-2 text-primary">PC Member / Reviewer for Conferences</h4>
                             <div class="d-flex flex-wrap gap-2">
                                 <span class="badge-conf">CVPR</span>
                                 <span class="badge-conf">ICCV</span>
