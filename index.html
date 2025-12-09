@@ -8,6 +8,11 @@
     <meta name="author" content="Yang Liu">
     <title>Yang Liu (刘阳) @ SYSU</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome Icons -->
@@ -17,54 +22,51 @@
 
     <style>
         :root {
-            /* Grey Scale Theme */
-            --primary-color: #495057;       /* Dark Grey */
-            --primary-hover: #212529;       /* Almost Black */
-            --accent-color: #6c757d;        /* Medium Grey for secondary text */
-            --bg-light: #f8f9fa;
-            --text-main: #000000;
-            --text-muted: #555555;
-            --sidebar-width: 18rem;
+            --primary-bg: #f8f9fa;
+            --sidebar-bg: #1e293b; /* Modern Slate Dark */
+            --sidebar-text: #e2e8f0;
+            --accent-color: #3b82f6; /* Modern Blue */
+            --text-main: #334155;
+            --text-dark: #0f172a;
+            --sidebar-width: 17rem;
             --transition-speed: 0.3s;
         }
 
         body {
-            /* Times New Roman / Serif Font for Academic Style */
-            font-family: 'Times New Roman', Times, serif;
+            font-family: 'Merriweather', serif; /* Academic readable font */
             color: var(--text-main);
             background-color: #fff;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
+        h1, h2, h3, h4, h5, .nav-link, .badge, .btn {
+            font-family: 'Roboto', sans-serif; /* Modern headings */
+        }
+
+        h1, h2 { color: var(--text-dark); font-weight: 700; }
+        
         a {
-            color: #343a40; /* Dark link color */
+            color: #2563eb;
             text-decoration: none;
             transition: all var(--transition-speed);
-            border-bottom: 1px dotted transparent;
         }
 
         a:hover {
-            color: #000;
-            border-bottom: 1px dotted #000;
-        }
-
-        h1, h2, h3, h4, h5 {
-            font-family: 'Times New Roman', Times, serif;
-            font-weight: 700;
-            color: #1a1a1a;
+            color: #1e40af;
+            text-decoration: underline;
         }
 
         /* --------------------------------------------------
            Sidebar / Navigation
         -------------------------------------------------- */
         .navbar-brand .img-profile {
-            width: 10rem;
-            height: 10rem;
-            border: 0.2rem solid rgba(255, 255, 255, 0.2);
+            width: 9rem;
+            height: 9rem;
+            border: 4px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             object-fit: cover;
-            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform var(--transition-speed);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
 
         @media (min-width: 992px) {
@@ -81,10 +83,9 @@
                 flex-direction: column;
                 width: var(--sidebar-width);
                 height: 100vh;
-                /* Elegant Grey Gradient */
-                background: linear-gradient(180deg, #343a40 0%, #212529 100%);
+                background-color: var(--sidebar-bg);
                 text-align: center;
-                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+                box-shadow: 4px 0 15px rgba(0,0,0,0.1);
             }
 
             .navbar .container-fluid {
@@ -94,49 +95,39 @@
                 height: 100%;
             }
 
-            .navbar-brand {
-                padding: 2rem 0;
-            }
+            .navbar-brand { padding: 2rem 0; }
 
             .navbar-brand .img-profile:hover {
-                transform: scale(1.02);
-                box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-            }
-
-            .navbar-collapse {
-                display: flex !important;
-                flex-direction: column;
-                width: 100%;
-                flex-grow: 1;
+                transform: scale(1.05);
+                border-color: var(--accent-color);
             }
 
             .navbar-nav {
-                flex-direction: column !important;
                 width: 100%;
                 margin-bottom: auto;
             }
 
             .nav-link {
                 padding: 1rem 2rem;
-                color: rgba(255, 255, 255, 0.75) !important;
-                font-weight: 600;
-                letter-spacing: 0.05rem;
+                color: rgba(255, 255, 255, 0.7);
+                font-weight: 500;
                 text-transform: uppercase;
-                font-size: 1rem; /* Slightly larger for serif */
-                border-left: 3px solid transparent;
-                transition: all 0.2s ease-in-out;
+                letter-spacing: 0.05rem;
+                font-size: 0.95rem;
+                border-left: 4px solid transparent;
+                transition: all 0.2s;
             }
 
             .nav-link:hover, .nav-link.active {
-                color: #fff !important;
-                background-color: rgba(255,255,255,0.05);
-                border-left: 3px solid #fff;
+                color: #fff;
+                background-color: rgba(255,255,255,0.08);
+                border-left-color: var(--accent-color);
             }
         }
 
         @media (max-width: 991.98px) {
             body { padding-top: 70px; }
-            .navbar { background-color: #343a40; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+            .navbar { background-color: var(--sidebar-bg); }
             .img-profile { width: 3rem; height: 3rem; border: 2px solid rgba(255,255,255,0.3); }
         }
 
@@ -144,244 +135,274 @@
            Content Sections
         -------------------------------------------------- */
         section.resume-section {
-            padding: 4rem 3rem;
+            padding: 5rem 3rem;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        @media(max-width: 768px) {
+            section.resume-section { padding: 3rem 1.5rem; }
         }
 
         section h2 {
-            font-size: 3.5rem;
-            margin-bottom: 2.5rem;
+            font-size: 3rem;
+            margin-bottom: 3rem;
             position: relative;
-            display: inline-block;
-            color: #212529;
         }
         
         section h2::after {
             content: '';
             display: block;
-            width: 80px;
-            height: 3px;
-            background: var(--primary-color);
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
             margin-top: 10px;
+            border-radius: 2px;
         }
 
         /* --------------------------------------------------
-           About Section
+           About & Intro
         -------------------------------------------------- */
         .subheading {
-            font-family: 'Times New Roman', Times, serif;
+            font-family: 'Roboto', sans-serif;
             text-transform: uppercase;
-            font-weight: 600;
-            font-size: 1.35rem;
-            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent-color);
             margin-bottom: 1.5rem;
         }
 
-        .text-primary-color {
-            color: var(--primary-color);
-        }
-
         .interest-tag {
-            background-color: #e9ecef;
-            color: #495057;
-            padding: 6px 14px;
-            border-radius: 4px; /* More square for academic look */
-            font-size: 1rem;
+            background-color: #f1f5f9;
+            color: #475569;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
             font-weight: 500;
+            font-family: 'Roboto', sans-serif;
             margin-bottom: 0.6rem;
+            margin-right: 0.4rem;
             display: inline-block;
             transition: all 0.2s;
-            border: 1px solid #dee2e6;
+            border: 1px solid #e2e8f0;
         }
         .interest-tag:hover {
-            background-color: #343a40;
+            background-color: var(--sidebar-bg);
             color: #fff;
-            border-color: #343a40;
-        }
-        
-        .list-awards li {
-            margin-bottom: 8px;
-            font-size: 1.05rem;
+            border-color: var(--sidebar-bg);
+            transform: translateY(-2px);
         }
 
         .social-icons a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            height: 3.2rem;
-            width: 3.2rem;
-            background-color: #343a40;
+            height: 3.5rem;
+            width: 3.5rem;
+            background-color: #334155;
             color: #fff !important;
             border-radius: 50%;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-right: 1rem;
-            transition: transform 0.2s;
-            border: none;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .social-icons a:hover {
-            background-color: #000;
-            transform: translateY(-3px);
-            border-bottom: none;
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
         }
 
         /* --------------------------------------------------
-           News Section
+           News Section (Timeline Style)
         -------------------------------------------------- */
         .news-box {
-            max-height: 500px;
+            max-height: 550px;
             overflow-y: auto;
             background: #fff;
-            padding: 25px;
-            border: 1px solid #dee2e6; 
-            border-radius: 4px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            /* Minimalist Scrollbar */
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e1 transparent;
         }
-
-        /* Custom Scrollbar */
         .news-box::-webkit-scrollbar { width: 6px; }
-        .news-box::-webkit-scrollbar-track { background: #f1f1f1; }
-        .news-box::-webkit-scrollbar-thumb { background: #adb5bd; }
-        .news-box::-webkit-scrollbar-thumb:hover { background: #495057; }
+        .news-box::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 20px; }
+
+        .news-list {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid #e2e8f0;
+        }
 
         .news-list li {
-            margin-bottom: 12px;
-            padding-left: 15px;
-            font-size: 1.05rem;
-            border-bottom: 1px solid #f8f9fa;
-            padding-bottom: 8px;
+            position: relative;
+            margin-bottom: 20px;
+            padding-left: 20px;
         }
+
+        .news-list li::before {
+            content: '';
+            position: absolute;
+            left: -26px; /* Adjust based on border and padding */
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 2px #e2e8f0;
+        }
+
         .news-date {
+            font-family: 'Roboto', sans-serif;
             font-weight: 700;
-            color: var(--primary-color);
-            margin-right: 8px;
-            font-family: 'Courier New', Courier, monospace; 
-            font-size: 0.95rem;
+            color: #334155;
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-right: 10px;
+            vertical-align: middle;
         }
 
         /* --------------------------------------------------
-           Publications Enhanced
+           Publications Enhanced (Larger Images)
         -------------------------------------------------- */
         .pub-card {
             background: #fff;
-            border: none;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-            border-radius: 6px;
-            margin-bottom: 2.5rem;
-            transition: transform 0.2s;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
             overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
 
         .pub-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: rgba(59, 130, 246, 0.3); /* Accent border on hover */
         }
 
+        /* Layout adjustment for larger images: col-md-4 (img) / col-md-8 (content) */
         .pub-img-container {
             width: 100%;
             height: 100%;
-            min-height: 180px;
+            min-height: 220px; /* Increased height */
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #f8f9fa;
+            background-color: #f8fafc;
+            border-right: 1px solid #f1f5f9;
             overflow: hidden;
-            border-right: 1px solid #eee;
+            padding: 0;
         }
 
         .pub-img {
             width: 100%;
-            height: auto;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            height: 100%;
+            object-fit: cover; /* or contain, depending on preference */
+            transition: transform 0.6s ease;
+        }
+        
+        .pub-card:hover .pub-img {
+            transform: scale(1.03);
         }
 
-        .card-body {
-            padding: 1.8rem;
-        }
+        .card-body { padding: 2rem; }
 
         .pub-title {
-            font-size: 1.35rem; 
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.4rem; 
             font-weight: 700;
-            margin-bottom: 0.6rem;
-            color: #111;
+            margin-bottom: 0.8rem;
+            color: #0f172a;
             line-height: 1.3;
         }
 
         .pub-authors {
             font-size: 1.05rem;
-            color: #444;
-            margin-bottom: 0.6rem;
+            color: #475569;
+            margin-bottom: 0.8rem;
         }
 
         .pub-authors b {
-            color: #000;
+            color: #0f172a;
             text-decoration: underline;
-            text-decoration-color: #aaa;
+            text-decoration-color: #94a3b8;
+            text-underline-offset: 3px;
         }
 
         .pub-venue {
             font-size: 1rem;
-            color: #666;
-            margin-bottom: 1rem;
+            color: #64748b;
+            margin-bottom: 1.2rem;
             font-style: italic;
         }
         
         .badge {
-            font-family: 'Arial', sans-serif;
             font-weight: 600;
-            padding: 0.4em 0.6em;
+            padding: 0.45em 0.7em;
+            letter-spacing: 0.5px;
+            vertical-align: middle;
         }
-        .badge-hot { background-color: #ffeaea; color: #b71c1c; border: 1px solid #ffcdd2; margin-left: 5px;}
-        .badge-oral { background-color: #e3f2fd; color: #0d47a1; border: 1px solid #bbdefb; margin-left: 5px;}
-        .badge-highlight { background-color: #fff8e1; color: #ff6f00; border: 1px solid #ffecb3; margin-left: 5px;}
-        .text-bg-success { background-color: #d4edda !important; color: #155724 !important; border: 1px solid #c3e6cb; }
+        .badge-hot { background-color: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+        .badge-oral { background-color: #e0f2fe; color: #075985; border: 1px solid #bae6fd; }
+        .badge-highlight { background-color: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+        .text-bg-success { background-color: #dcfce7 !important; color: #166534 !important; border: 1px solid #bbf7d0; }
 
         .pub-links a {
-            font-family: 'Arial', sans-serif;
-            font-size: 0.85rem;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.8rem;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
-            padding: 5px 15px;
+            padding: 6px 16px;
             margin-right: 8px;
-            margin-bottom: 5px;
-            border-radius: 4px;
+            margin-bottom: 8px;
+            border-radius: 50px; /* Pill shape */
             background-color: #fff;
-            border: 1px solid #ced4da;
-            color: #495057;
+            border: 1px solid #cbd5e1;
+            color: #475569;
             text-transform: uppercase;
+            transition: all 0.2s;
         }
 
         .pub-links a:hover {
-            background-color: #343a40;
+            background-color: #1e293b;
             color: #fff;
-            border-color: #343a40;
-            border-bottom: 1px solid #343a40;
+            border-color: #1e293b;
             text-decoration: none;
         }
 
         .github-badges {
-            margin-top: 10px;
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
         }
         .github-badges img {
-            height: 20px;
-            margin-right: 5px;
+            height: 22px;
+            opacity: 0.9;
+            transition: opacity 0.2s;
         }
+        .github-badges img:hover { opacity: 1.0; }
         
         .bibtex-box {
-            background-color: #f8f9fa;
-            color: #333;
-            padding: 15px;
-            border: 1px solid #dee2e6;
-            border-radius: 4px;
-            font-size: 0.9rem;
+            background-color: #f1f5f9;
+            color: #334155;
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 0.85rem;
             margin-top: 15px;
             font-family: 'Courier New', monospace;
             white-space: pre-wrap;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
         }
         
         /* --------------------------------------------------
@@ -389,33 +410,41 @@
         -------------------------------------------------- */
         .service-card {
             background: #fff;
-            padding: 2rem;
-            border-radius: 6px;
-            border: 1px solid #e9ecef;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
             height: 100%;
         }
         .service-card h4 {
-            border-bottom: 2px solid #e9ecef;
+            border-bottom: 2px solid #f1f5f9;
             padding-bottom: 15px;
             margin-bottom: 20px;
-            color: #343a40;
+            color: #1e293b;
+            font-weight: 700;
         }
         .list-group-item {
             border: none;
             padding: 0.6rem 0;
             font-size: 1.05rem;
-            color: #444;
+            color: #475569;
         }
         .badge-conf {
             display: inline-block;
-            background-color: #fff;
-            color: #343a40;
-            border: 1px solid #ced4da;
-            padding: 6px 12px;
-            font-size: 0.95rem;
-            border-radius: 3px;
-            margin-bottom: 5px;
+            background-color: #f8fafc;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+            padding: 8px 14px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.2s;
+        }
+        .badge-conf:hover {
+            background-color: #e2e8f0;
+            color: #0f172a;
         }
     </style>
 </head>
@@ -451,20 +480,20 @@
         <!-- About Section -->
         <section class="resume-section" id="about">
             <div class="resume-section-content">
-                <h1 class="mb-2 display-4 fw-bold">Yang Liu <span class="h3 fw-normal text-muted">(刘阳)</span></h1>
+                <h1 class="mb-2 display-4 fw-bold">Yang Liu <span class="h3 fw-light text-secondary">(刘阳)</span></h1>
                 <div class="subheading mb-4">
                     Associate Professor @ Sun Yat-sen University (SYSU)
                 </div>
                 
                 <div class="row mb-5">
                     <div class="col-lg-8">
-                        <p class="lead mb-4" style="color: #444;">
-                            <i class="fas fa-envelope me-2 text-primary-color"></i> liuy856@mail.sysu.edu.cn<br>
-                            <i class="fas fa-university me-2 text-primary-color"></i> School of Computer Science and Engineering, SYSU, Guangzhou, China<br>
-                            <i class="fas fa-users me-2 text-primary-color"></i> HCP-Lab
+                        <p class="lead mb-4" style="color: #475569;">
+                            <i class="fas fa-envelope me-2" style="color:#64748b;"></i> liuy856@mail.sysu.edu.cn<br>
+                            <i class="fas fa-university me-2" style="color:#64748b;"></i> School of Computer Science and Engineering, SYSU, Guangzhou, China<br>
+                            <i class="fas fa-users me-2" style="color:#64748b;"></i> HCP-Lab
                         </p>
                         <p class="mb-4 text-justify">
-                            I am currently an Associate Professor at the <a href="http://sdcs.sysu.edu.cn/" target="_blank">School of Computer Science and Engineering</a>, <a href="http://www.sysu.edu.cn/" target="_blank">Sun Yat-sen University (SYSU)</a>. I am a core member of the <a href="http://www.sysu-hcp.net/" target="_blank" class="fw-bold">HCP Lab</a> led by Prof. Liang Lin. 
+                            I am currently an Associate Professor at the <a href="http://sdcs.sysu.edu.cn/" target="_blank">School of Computer Science and Engineering</a>, <a href="http://www.sysu.edu.cn/" target="_blank">Sun Yat-sen University (SYSU)</a>. I am a core member of the <a href="http://www.sysu-hcp.net/" target="_blank" class="fw-bold text-dark">HCP Lab</a> led by Prof. Liang Lin. 
                             I obtained my Ph.D. degree from Xidian University in 2019. 
                         </p>
                         <p class="mb-4 text-justify">
@@ -475,10 +504,10 @@
                             <a href="https://cse.sysu.edu.cn/teacher/LiuYang" target="_blank" class="badge bg-secondary text-decoration-none ms-2"><i class="fas fa-language"></i> 中文主页</a>
                         </p>
                         
-                        <div class="alert alert-light border border-secondary shadow-sm rounded-0" role="alert">
-                            <h5 class="alert-heading text-dark"><i class="fas fa-bullhorn me-2"></i>Recruiting</h5>
+                        <div class="alert alert-light border shadow-sm rounded-3" style="background-color: #f8fafc; border-color: #e2e8f0;" role="alert">
+                            <h5 class="alert-heading fw-bold" style="color: #1e293b;"><i class="fas fa-bullhorn me-2 text-warning"></i>Recruiting</h5>
                             <hr>
-                            <p class="mb-0 small" style="color: #333;">
+                            <p class="mb-0 small" style="color: #334155;">
                                 Our team has sufficient computing resources and robotic hardware. 
                                 I am looking for self-motivated <b>Ph.D. students, Master students, and Research Interns</b> who are interested in Embodied AI and Multimodal Reasoning. 
                                 Please email me your CV if interested.
@@ -487,7 +516,7 @@
                     </div>
                     <div class="col-lg-4 text-center d-flex align-items-center justify-content-center">
                         <!-- Visitor Map -->
-                        <div style="transform: scale(0.9); border: 1px solid #ccc; padding: 5px; border-radius: 4px;">
+                        <div style="transform: scale(0.9); border: 1px solid #e2e8f0; padding: 10px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
                             <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=300&t=m&d=Ng_LP0UrQP5gWGJEym9UVNi8Up0eZ-cQXq9wH1Me7Bg"></script>
                         </div>
                     </div>
@@ -495,7 +524,7 @@
 
                 <div class="row">
                     <div class="col-md-6 mb-4">
-                        <h3 class="h4 mb-3 border-bottom pb-2" style="border-color: #ccc !important;">Research Interests</h3>
+                        <h3 class="h4 mb-3 pb-2 border-bottom">Research Interests</h3>
                         <div>
                             <span class="interest-tag"><i class="fas fa-robot me-1"></i> Embodied AI</span>
                             <span class="interest-tag"><i class="fas fa-cubes me-1"></i> 3D Spatial Reasoning</span>
@@ -505,13 +534,13 @@
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
-                        <h3 class="h4 mb-3 border-bottom pb-2" style="border-color: #ccc !important;">Selected Awards</h3>
-                        <ul class="fa-ul list-awards text-secondary">
-                            <li><span class="fa-li"><i class="fas fa-award text-dark"></i></span>Outstanding Teaching Achievement of Guangdong Province (2nd Prize), 2025</li>
-                            <li><span class="fa-li"><i class="fas fa-award text-dark"></i></span>Excellent Author of PHE (Publishing House of Electronics Industry), 2024</li>
-                            <li><span class="fa-li"><i class="fas fa-award text-dark"></i></span>CCF ChinaSoft 2023 Challenge (3rd Prize)</li>
-                            <li><span class="fa-li"><i class="fas fa-award text-dark"></i></span>3rd Guangdong Province Young CS Academic Show (1st Prize), 2023</li>
-                            <li><span class="fa-li"><i class="fas fa-award text-dark"></i></span>National Scholarship for PhD Students, 2018</li>
+                        <h3 class="h4 mb-3 pb-2 border-bottom">Selected Awards</h3>
+                        <ul class="fa-ul list-awards" style="color: #475569;">
+                            <li><span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>Outstanding Teaching Achievement of Guangdong Province (2nd Prize), 2025</li>
+                            <li><span class="fa-li"><i class="fas fa-award text-secondary"></i></span>Excellent Author of PHE (Publishing House of Electronics Industry), 2024</li>
+                            <li><span class="fa-li"><i class="fas fa-award text-secondary"></i></span>CCF ChinaSoft 2023 Challenge (3rd Prize)</li>
+                            <li><span class="fa-li"><i class="fas fa-award text-secondary"></i></span>3rd Guangdong Province Young CS Academic Show (1st Prize), 2023</li>
+                            <li><span class="fa-li"><i class="fas fa-award text-secondary"></i></span>National Scholarship for PhD Students, 2018</li>
                         </ul>
                     </div>
                 </div>
@@ -537,7 +566,7 @@
         <section class="resume-section bg-light" id="news">
             <div class="resume-section-content">
                 <h2 class="mb-5">News</h2>
-                <div class="news-box">
+                <div class="news-box shadow-sm">
                     <ul class="list-unstyled news-list">
                         <li><span class="news-date">2025-11</span> One T-IP paper is selected as the <b>ESI Highly Cited Paper</b>!</li>
                         <li><span class="news-date">2025-09</span> Two papers are accepted by <b>NeurIPS 2025</b>!</li>
@@ -576,17 +605,18 @@
                 <h2 class="mb-5">Publications</h2>
 
                 <!-- Books -->
-                <h3 class="mb-4 text-muted" style="border-left: 5px solid #495057; padding-left: 15px;">Books</h3>
+                <h3 class="mb-4 text-muted" style="border-left: 5px solid #1e293b; padding-left: 15px;">Books</h3>
                 
                 <!-- Book 1 -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3 text-center">
+                    <div class="row g-0 align-items-center h-100">
+                        <!-- Changed col-md-3 to col-md-4 for larger images -->
+                        <div class="col-md-4 text-center">
                             <div class="pub-img-container">
                                 <img src="img/PHE.jpg" class="pub-img" alt="Book Cover">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Multimodal Large Models: The New Paradigm of Artificial General Intelligence</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">《多模态大模型：新一代人工智能技术范式》</h6>
@@ -599,6 +629,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/Book-of-MLM?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/HCPLab-SYSU/Book-of-MLM?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/HCPLab-SYSU/Book-of-MLM?style=social">
                                 </div>
                             </div>
                         </div>
@@ -607,13 +639,13 @@
 
                 <!-- Book 2 -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3 text-center">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4 text-center">
                             <div class="pub-img-container">
                                 <img src="img/PHE-ENG.png" class="pub-img" alt="Book Cover">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Multimodal Large Models: The New Paradigm of Artificial Intelligence</h5>
                                 <p class="pub-authors">Liang Lin, <b>Yang Liu</b></p>
@@ -623,6 +655,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/Book-of-MLM?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/HCPLab-SYSU/Book-of-MLM?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/HCPLab-SYSU/Book-of-MLM?style=social">
                                 </div>
                             </div>
                         </div>
@@ -630,15 +664,15 @@
                 </div>
 
                 <!-- Open Source Framework -->
-                <h3 class="mb-4 mt-5 text-muted" style="border-left: 5px solid #495057; padding-left: 15px;">Open-source Framework</h3>
+                <h3 class="mb-4 mt-5 text-muted" style="border-left: 5px solid #1e293b; padding-left: 15px;">Open-source Framework</h3>
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3 text-center">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4 text-center">
                             <div class="pub-img-container">
                                 <img src="img/CausalVLR.gif" class="pub-img" alt="Framework Demo">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">CausalVLR: A Toolbox and Benchmark for Visual-Linguistic Causal Reasoning</h5>
                                 <p class="pub-authors"><b>Yang Liu</b>, Weixing Chen, Guanbin Li, Liang Lin</p>
@@ -651,6 +685,7 @@
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/CausalVLR?style=social">
                                     <img alt="GitHub forks" src="https://img.shields.io/github/forks/HCPLab-SYSU/CausalVLR?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/HCPLab-SYSU/CausalVLR?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibCausal">
 @article{CausalVLR,
@@ -665,17 +700,17 @@
                 </div>
 
                 <!-- Papers List -->
-                <h3 class="mb-4 mt-5 text-muted" style="border-left: 5px solid #495057; padding-left: 15px;">Selected Papers</h3>
+                <h3 class="mb-4 mt-5 text-muted" style="border-left: 5px solid #1e293b; padding-left: 15px;">Selected Papers</h3>
 
                 <!-- Paper: 3DAffordSplat -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/3DAffordSplat.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">3DAffordSplat: Efficient Affordance Reasoning with 3D Gaussians</h5>
                                 <p class="pub-authors">Zeming Wei#, Junyi Lin#, <b>Yang Liu</b><sup>✉</sup>, Weixing Chen, Jingzhou Luo, Guanbin Li, Liang Lin</p>
@@ -687,6 +722,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/3DAffordSplat?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/HCPLab-SYSU/3DAffordSplat?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/HCPLab-SYSU/3DAffordSplat?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bib3DAffordSplat">
 @article{3DAffordSplat,
@@ -702,13 +739,13 @@
 
                 <!-- Paper: EXPRESS-Bench -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/EXPRESS-Bench.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Beyond the Destination: A Novel Benchmark for Exploration-Aware Embodied Question Answering</h5>
                                 <p class="pub-authors">Kaixuan Jiang, <b>Yang Liu</b><sup>✉</sup>, Weixing Chen, Jingzhou Luo, Ziliang Chen, Ling Pan, Guanbin Li, Liang Lin</p>
@@ -720,6 +757,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/EXPRESS-Bench?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/HCPLab-SYSU/EXPRESS-Bench?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/HCPLab-SYSU/EXPRESS-Bench?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibEXPRESS">
 @inproceedings{EXPRESSBench,
@@ -735,13 +774,13 @@
 
                 <!-- Paper: Embodied Survey -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/Embodied_survey.jpg" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Aligning Cyber Space with Physical World: A Comprehensive Survey on Embodied AI</h5>
                                 <p class="pub-authors"><b>Yang Liu</b>, Weixing Chen, Yongjie Bai, Xiaodan Liang, Guanbin Li, Wen Gao, Liang Lin</p>
@@ -753,6 +792,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/Embodied_AI_Paper_List?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/HCPLab-SYSU/Embodied_AI_Paper_List?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/HCPLab-SYSU/Embodied_AI_Paper_List?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibEmbodiedSurvey">
 @article{liu2024aligning,
@@ -768,13 +809,13 @@
 
                 <!-- Paper: VLCI -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/VLCI.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Cross-Modal Causal Representation Learning for Radiology Report Generation</h5>
                                 <p class="pub-authors">Weixing Chen, <b>Yang Liu</b><sup>✉</sup>, Ce Wang, Jiarui Zhu, Guanbin Li, Cheng-Lin Liu, Liang Lin</p>
@@ -786,6 +827,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/WissingChen/VLCI?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/WissingChen/VLCI?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/WissingChen/VLCI?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibVLCI">
 @article{chen2025visual,
@@ -801,13 +844,13 @@
 
                 <!-- Paper: ODMixer -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/ODMixer.jpg" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">ODMixer: Fine-grained Spatial-temporal MLP for Metro Origin-Destination Prediction</h5>
                                 <p class="pub-authors"><b>Yang Liu</b>, Binglin Chen, Yongsen Zheng, Lechao Cheng, Guanbin Li, Liang Lin</p>
@@ -819,6 +862,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/KLatitude/ODMixer?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/KLatitude/ODMixer?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/KLatitude/ODMixer?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibODMixer">
 @article{liu2024fine,
@@ -834,13 +879,13 @@
 
                 <!-- Paper: TAVP -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/TAVP.jpg" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Learning to See and Act: Task-Aware View Planning for Robotic Manipulation</h5>
                                 <p class="pub-authors">Yongjie Bai#, Zhouxia Wang#, <b>Yang Liu</b><sup>✉</sup>, Weixing Chen, Ziliang Chen, Mingtong Dai, Yongsen Zheng, Lingbo Liu, Guanbin Li, Liang Lin</p>
@@ -852,6 +897,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/TAVP?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/HCPLab-SYSU/TAVP?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/HCPLab-SYSU/TAVP?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibTAVP">
 @misc{bai2025learningacttaskawareview,
@@ -869,13 +916,13 @@
 
                 <!-- Paper: AutoLayout -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/AutoLayout.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">AutoLayout: Closed-Loop Layout Synthesis via Slow-Fast Collaborative Reasoning</h5>
                                 <p class="pub-authors">Weixing Chen, Dafeng Chi, <b>Yang Liu</b><sup>✉</sup>, Yuxi Yang, Yexin Zhang, Yuzheng Zhuang, Xingyue Quan, Jianye Hao, Guanbin Li, Liang Lin</p>
@@ -898,13 +945,13 @@
 
                 <!-- Paper: DART -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/DART.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">DART: Differentiable Dynamic Adaptive Region Tokenizer for Vision Foundation Models</h5>
                                 <p class="pub-authors">Shicheng Yin, Kaixuan Yin, <b>Yang Liu</b><sup>✉</sup>, Weixing Chen, Liang Lin</p>
@@ -916,6 +963,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/DART?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/HCPLab-SYSU/DART?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/HCPLab-SYSU/DART?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibDART">
 @article{yin2025dart,
@@ -931,13 +980,13 @@
 
                 <!-- Paper: LHPR-VLN -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/LHPR-VLN.gif" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Towards Long-Horizon Vision-Language Navigation: Platform, Benchmark and Method</h5>
                                 <p class="pub-authors">Xinshuai Song*, Weixing Chen*, <b>Yang Liu</b><sup>✉</sup>, Weikai Chen, Guanbin Li, Liang Lin</p>
@@ -949,6 +998,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/LH-VLN?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/HCPLab-SYSU/LH-VLN?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/HCPLab-SYSU/LH-VLN?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibLHVLN">
 @inproceedings{song2024towards,
@@ -964,13 +1015,13 @@
 
                 <!-- Paper: DSPNet -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/DSPNet.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">DSPNet: Dual-vision Scene Perception for Robust 3D Question Answering</h5>
                                 <p class="pub-authors">Jingzhou Luo, <b>Yang Liu</b><sup>✉</sup>, Weixing Chen, Zhen Li, Yaowei Wang, Guanbin Li, Liang Lin</p>
@@ -982,6 +1033,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/LZ-CH/DSPNet?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/LZ-CH/DSPNet?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/LZ-CH/DSPNet?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibDSPNet">
 @inproceedings{luo2025dspnet,
@@ -997,13 +1050,13 @@
 
                 <!-- Paper: CRA-GQA -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/CRA.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Cross-modal Causal Relation Alignment for Video Question Grounding</h5>
                                 <p class="pub-authors">Weixing Chen, <b>Yang Liu</b><sup>✉</sup>, Binglin Chen, Jiandong Su, Yongsen Zheng, Liang Lin</p>
@@ -1015,6 +1068,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/WissingChen/CRA-GQA?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/WissingChen/CRA-GQA?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/WissingChen/CRA-GQA?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibCRA">
 @inproceedings{chen2025cross,
@@ -1030,13 +1085,13 @@
 
                 <!-- Paper: InfiniteWorld -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/InfiniteWorld.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">InfiniteWorld: A Unified Scalable Simulation Framework for General Visual-Language Robot Interaction</h5>
                                 <p class="pub-authors">Pengzhen Ren, Min Li, Zhen Luo, Xinshuai Song, Ziwei Chen, Weijia Liufu, Yixuan Yang, Hao Zheng, Rongtao Xu, Zitong Huang, Tongsheng Ding, Luyang Xie, Kaidong Zhang, Changfei Fu, <b>Yang Liu</b>, Liang Lin, Feng Zheng, Xiaodan Liang</p>
@@ -1048,6 +1103,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/pzhren/InfiniteWorld?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/pzhren/InfiniteWorld?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/pzhren/InfiniteWorld?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibInfiniteWorld">
 @article{ren2024infiniteworld,
@@ -1063,13 +1120,13 @@
 
                 <!-- Paper: CMCIR -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/VLCIR.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Cross-Modal Causal Relational Reasoning for Event-Level Visual Question Answering</h5>
                                 <p class="pub-authors"><b>Yang Liu</b>, Guanbin Li, Liang Lin</p>
@@ -1081,6 +1138,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/CMCIR?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/HCPLab-SYSU/CMCIR?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/HCPLab-SYSU/CMCIR?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibCMCIR">
 @article{liu2022cross,
@@ -1097,13 +1156,13 @@
 
                 <!-- Paper: CRS -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/CRS.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Diversity Matters: User-Centric Multi-Interest Learning for Conversational Movie Recommendation</h5>
                                 <p class="pub-authors">Yongsen Zheng, Guohua Wang, <b>Yang Liu</b>, Liang Lin</p>
@@ -1118,13 +1177,13 @@
 
                 <!-- Paper: MEIA -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/MEIA.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">MEIA: Multimodal Embodied Perception and Interaction in Unknown Environments</h5>
                                 <p class="pub-authors"><b>Yang Liu</b>, Xinshuai Song, Kaixuan Jiang, Weixing Chen, Jingzhou Luo, Guanbin Li, Liang Lin</p>
@@ -1147,13 +1206,13 @@
 
                 <!-- Paper: CausalGPT -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/CaCoCoT.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">CausalGPT: Illuminating Faithfulness and Causality for Knowledge-based Reasoning with LLMs</h5>
                                 <p class="pub-authors">Ziyi Tang, Ruilin Wang, Weixing Chen, Yongsen Zheng, <b>Yang Liu</b>, Keze Wang, Tianshui Chen, Liang Lin</p>
@@ -1165,6 +1224,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/CausalVLR?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/HCPLab-SYSU/CausalVLR?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/HCPLab-SYSU/CausalVLR?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibCausalGPT">
 @article{tang2023towards,
@@ -1180,13 +1241,13 @@
 
                 <!-- Paper: VCSR -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/VCSR.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Visual Causal Scene Refinement for Video Question Answering</h5>
                                 <p class="pub-authors">Yushen Wei*, <b>Yang Liu*</b>, Hong Yan, Guanbin Li, Liang Lin<sup>✉</sup></p>
@@ -1198,6 +1259,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/CausalVLR?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/HCPLab-SYSU/CausalVLR?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/HCPLab-SYSU/CausalVLR?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibVCSR">
 @inproceedings{10.1145/3581783.3611873,
@@ -1213,13 +1276,13 @@
 
                 <!-- Paper: SkeletonMAE -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/SkeletonMAE.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">SkeletonMAE: Graph-based Masked Autoencoder for Skeleton Sequence Pre-training</h5>
                                 <p class="pub-authors">Hong Yan, <b>Yang Liu</b><sup>✉</sup>, Yushen Wei, Zhen Li, Guanbin Li, Liang Lin</p>
@@ -1231,6 +1294,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/HongYan1123/SkeletonMAE?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/HongYan1123/SkeletonMAE?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/HongYan1123/SkeletonMAE?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibSkeletonMAE">
 @inproceedings{yan2023skeletonmae,
@@ -1246,13 +1311,13 @@
 
                 <!-- Paper: ESL -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/ESL.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Enhanced Soft Label for Semi-Supervised Semantic Segmentation</h5>
                                 <p class="pub-authors">Jie Ma, Chuan Wang, <b>Yang Liu</b>, Liang Lin, Guanbin Li</p>
@@ -1264,6 +1329,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/unrealMJ/ESL?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/unrealMJ/ESL?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/unrealMJ/ESL?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibESL">
 @inproceedings{ma2023enhanced,
@@ -1279,13 +1346,13 @@
 
                 <!-- Paper: DenseLight -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/DenseLight.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">DenseLight: Efficient Control for Large-scale Traffic Signals with Dense Feedback</h5>
                                 <p class="pub-authors">Junfan Lin, Yuying Zhu, Lingbo Liu, <b>Yang Liu</b><sup>✉</sup>, Guanbin Li, Liang Lin</p>
@@ -1297,6 +1364,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/junfanlin/DenseLight?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/junfanlin/DenseLight?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/junfanlin/DenseLight?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibDenseLight">
 @inproceedings{ijcai2023p672,
@@ -1312,13 +1381,13 @@
 
                 <!-- Paper: HORLN -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/HORLN.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Hybrid-Order Representation Learning for Electricity Theft Detection</h5>
                                 <p class="pub-authors">Yuying Zhu, Yang Zhang, Lingbo Liu, <b>Yang Liu</b><sup>✉</sup>, Guanbin Li, Mingzhi Mao, Liang Lin</p>
@@ -1330,6 +1399,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/GillianZhu/HORLN?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/GillianZhu/HORLN?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/GillianZhu/HORLN?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibHORLN">
 @article{zhu2022hybrid,
@@ -1345,13 +1416,13 @@
 
                 <!-- Paper: TFP -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/POI.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Urban Regional Function Guided Traffic Flow Prediction</h5>
                                 <p class="pub-authors">Kuo Wang, Lingbo Liu, <b>Yang Liu</b><sup>✉</sup>, Guanbin Li, Liang Lin</p>
@@ -1374,13 +1445,13 @@
 
                 <!-- Paper: DADA -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/DADA.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Dual adversarial adaptation for cross-device real-world image super-resolution</h5>
                                 <p class="pub-authors">Xiaoqian Xu, Pengxu Wei, Weikai Chen, <b>Yang Liu</b>, Mingzhi Mao, Liang Lin, Guanbin Li</p>
@@ -1392,6 +1463,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/lonelyhope/DADA?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/lonelyhope/DADA?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/lonelyhope/DADA?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibDADA">
 @inproceedings{xu2022dual,
@@ -1407,13 +1480,13 @@
 
                 <!-- Paper: MIR -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container ratio ratio-16x9">
                                 <video muted="muted" autoplay loop playsinline src="img/MIR.mp4" style="object-fit: cover; width:100%; height:100%;"></video>
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Causal Reasoning Meets Visual Representation Learning: A Prospective Study</h5>
                                 <p class="pub-authors"><b>Yang Liu</b>, Yushen Wei, Hong Yan, Guanbin Li, Liang Lin</p>
@@ -1426,6 +1499,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/YangLiu9208/MIR?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/YangLiu9208/MIR?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/YangLiu9208/MIR?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibMIR">
 @article{liu2022causal,
@@ -1441,13 +1516,13 @@
 
                 <!-- Paper: VSAR -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/VSAR.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Cross-modal knowledge distillation for Vision-to-Sensor action recognition</h5>
                                 <p class="pub-authors">Jianyuan Ni, Raunak Sarbajna, <b>Yang Liu</b>, Anne HH Ngu, Yan Yan</p>
@@ -1470,13 +1545,13 @@
 
                 <!-- Paper: TCGL -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/TCGL.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">TCGL: Temporal Contrastive Graph for Self-supervised Video Representation Learning</h5>
                                 <p class="pub-authors"><b>Yang Liu</b>, Keze Wang, Lingbo Liu, Haoyuan Lan, Liang Lin</p>
@@ -1488,6 +1563,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/YangLiu9208/TCGL?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/YangLiu9208/TCGL?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/YangLiu9208/TCGL?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibTCGL">
 @article{liu2022tcgl,
@@ -1503,13 +1580,13 @@
 
                 <!-- Paper: SAKDN -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/SAKDN.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Semantics-aware Adaptive Knowledge Distillation for Sensor-to-Vision Action Recognition</h5>
                                 <p class="pub-authors"><b>Yang Liu</b>, Keze Wang, Guanbin Li, Liang Lin</p>
@@ -1521,6 +1598,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/YangLiu9208/SAKDN?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/YangLiu9208/SAKDN?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/YangLiu9208/SAKDN?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibSAKDN">
 @article{liu2021semantics,
@@ -1536,13 +1615,13 @@
 
                 <!-- Paper: DIVAFN -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/TIP.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Deep Image-to-Video Adaptation and Fusion Networks for Action Recognition</h5>
                                 <p class="pub-authors"><b>Yang Liu</b>, Zhaoyang Lu, Jing Li, Tao Yang, Chao Yao</p>
@@ -1554,6 +1633,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/YangLiu9208/DIVAFN?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/YangLiu9208/DIVAFN?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/YangLiu9208/DIVAFN?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibDIVAFN">
 @article{liu2019deep,
@@ -1569,13 +1650,13 @@
 
                 <!-- Paper: JSRDA -->
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/TCSVT.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Hierarchically Learned View-Invariant Representations for Cross View Action Recognition</h5>
                                 <p class="pub-authors"><b>Yang Liu</b>, Zhaoyang Lu, Jing Li, Tao Yang</p>
@@ -1587,6 +1668,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/YangLiu9208/JSRDA?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/YangLiu9208/JSRDA?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/YangLiu9208/JSRDA?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibJSRDA">
 @article{liu2018hierarchically,
@@ -1602,13 +1685,13 @@
 
                  <!-- Paper: TSTDDs -->
                  <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4">
                             <div class="pub-img-container">
                                 <img src="img/SPL.png" class="pub-img" alt="Paper Image">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Global Temporal Representation based CNNs for Infrared Action Recognition</h5>
                                 <p class="pub-authors"><b>Yang Liu</b>, Zhaoyang Lu, Jing Li, Tao Yang, Chao Yao</p>
@@ -1620,6 +1703,8 @@
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/YangLiu9208/TSTDDs?style=social">
+                                    <img alt="GitHub forks" src="https://img.shields.io/github/forks/YangLiu9208/TSTDDs?style=social">
+                                    <img alt="GitHub issues" src="https://img.shields.io/github/issues/YangLiu9208/TSTDDs?style=social">
                                 </div>
                                 <div class="collapse bibtex-box" id="bibTSTDDs">
 @article{liu2018global,
@@ -1634,15 +1719,15 @@
                 </div>
 
                 <!-- PhD Thesis -->
-                <h3 class="mb-4 mt-5 text-muted" style="border-left: 5px solid #495057; padding-left: 15px;">PhD Dissertation</h3>
+                <h3 class="mb-4 mt-5 text-muted" style="border-left: 5px solid #1e293b; padding-left: 15px;">PhD Dissertation</h3>
                 <div class="pub-card card">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3 text-center">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-md-4 text-center">
                             <div class="pub-img-container">
                                 <img src="img/XD.gif" class="pub-img" alt="Thesis">
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="pub-title">Cross-domain Human Action Recognition via Transfer Learning (基于迁移学习的跨域人体行为识别研究)</h5>
                                 <p class="pub-authors"><b>Yang Liu</b> (Supervisor: Prof. Zhaoyang Lu)</p>
@@ -1675,16 +1760,16 @@
                         <div class="service-card">
                             <h4 class="h5">Reviewer for Journals</h4>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-dark"></i> IEEE Trans. on Pattern Analysis and Machine Intelligence (TPAMI)</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-dark"></i> IEEE Trans. on Image Processing (TIP)</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-dark"></i> IEEE Trans. on Neural Networks and Learning Systems (TNNLS)</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-dark"></i> IEEE Trans. on Cybernetics</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-dark"></i> International Journal of Computer Vision (IJCV)</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-dark"></i> ACM Trans. on Multimedia Computing Comm. and Applications</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-dark"></i> Pattern Recognition (PR)</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-dark"></i> Neural Networks</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-dark"></i> Information Fusion</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-dark"></i> Advanced Science</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> IEEE Trans. on Pattern Analysis and Machine Intelligence (TPAMI)</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> IEEE Trans. on Image Processing (TIP)</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> IEEE Trans. on Neural Networks and Learning Systems (TNNLS)</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> IEEE Trans. on Cybernetics</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> International Journal of Computer Vision (IJCV)</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> ACM Trans. on Multimedia Computing Comm. and Applications</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> Pattern Recognition (PR)</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> Neural Networks</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> Information Fusion</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> Advanced Science</li>
                             </ul>
                         </div>
                     </div>
@@ -1692,7 +1777,7 @@
                     <div class="col-md-6">
                         <div class="service-card">
                             <h4 class="h5">PC Member / Reviewer for Conferences</h4>
-                            <div class="d-flex flex-wrap gap-2">
+                            <div class="d-flex flex-wrap gap-2 mb-3">
                                 <span class="badge-conf">CVPR</span>
                                 <span class="badge-conf">ICCV</span>
                                 <span class="badge-conf">ECCV</span>
@@ -1706,7 +1791,7 @@
                                 <span class="badge-conf">UbiComp</span>
                                 <span class="badge-conf">ISWC</span>
                             </div>
-                            <div class="mt-4 text-muted small">
+                            <div class="alert alert-secondary small mb-0 border-0">
                                 <i class="fas fa-info-circle me-1"></i> Serving as Program Committee member or Reviewer for top-tier computer vision and machine learning conferences.
                             </div>
                         </div>
@@ -1737,4 +1822,3 @@
 
 </body>
 </html>
-```
