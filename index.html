@@ -11,7 +11,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -21,457 +21,414 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
     <style>
+        /* ============================================================
+           Design system — scholarly ink-on-paper, single green accent
+        ============================================================ */
         :root {
-            --primary-bg: #f8f9fa;
-            --sidebar-bg: #1e293b; /* Modern Slate Dark */
-            --sidebar-text: #e2e8f0;
-            --accent-color: #3b82f6; /* Modern Blue */
-            --text-main: #334155;
-            --text-dark: #0f172a;
-            /* 增大侧边栏宽度以容纳大头像 */
-            --sidebar-width: 20rem; 
-            --transition-speed: 0.3s;
+            --ink:        #171a1e;   /* primary text / dark surfaces */
+            --ink-2:      #2b3138;   /* secondary text */
+            --ink-3:      #616a73;   /* muted text */
+            --paper:      #faf9f6;   /* page background */
+            --paper-2:    #f1efe9;   /* alternating sections */
+            --line:       #e3e0d8;   /* hairline borders */
+            --accent:     #0e5c3f;   /* SYSU deep green */
+            --accent-ink: #0a4630;
+            --accent-soft: rgba(14, 92, 63, 0.08);
+            --sidebar-width: 19rem;
+            --ease-out: cubic-bezier(0.22, 0.61, 0.21, 1);
+            --serif: 'Merriweather', 'Songti SC', 'Noto Serif SC', 'SimSun', serif;
+            --sans:  'Archivo', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
         }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
+
+        ::selection { background: var(--accent); color: var(--paper); }
 
         body {
-            font-family: 'Merriweather', serif; /* Academic readable font */
-            color: var(--text-main);
-            background-color: #fff;
-            line-height: 1.7;
+            font-family: var(--serif);
+            color: var(--ink-2);
+            background-color: var(--paper);
+            line-height: 1.75;
+            font-size: 1rem;
         }
 
-        h1, h2, h3, h4, h5, .nav-link, .badge, .btn {
-            font-family: 'Roboto', sans-serif; /* Modern headings */
+        h1, h2, h3, h4, h5, h6, .nav-link, .badge, .btn, .kicker, .news-date {
+            font-family: var(--sans);
         }
 
-        h1, h2 { color: var(--text-dark); font-weight: 700; }
-        
-        a {
-            color: #2563eb;
-            text-decoration: none;
-            transition: all var(--transition-speed);
-        }
+        h1, h2 { color: var(--ink); font-weight: 700; letter-spacing: -0.015em; }
 
-        a:hover {
-            color: #1e40af;
-            text-decoration: underline;
-        }
+        a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid rgba(14,92,63,.25); transition: color .25s var(--ease-out), border-color .25s var(--ease-out); }
+        a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+        .pub-links a, .social-icons a, .nav-link, .navbar-brand, .badge, a.btn { border-bottom: none; }
 
         /* --------------------------------------------------
-           Sidebar / Navigation
+           Scroll progress
+        -------------------------------------------------- */
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+            background: var(--accent); z-index: 2000;
+            transition: width .1s linear;
+        }
+        @media (min-width: 992px) { #scroll-progress { left: var(--sidebar-width); } }
+
+        /* --------------------------------------------------
+           Sidebar
         -------------------------------------------------- */
         .navbar-brand .img-profile {
-            /* 头像尺寸放大 */
-            width: 14rem;  
-            height: 14rem;
-            border: 6px solid rgba(255, 255, 255, 0.15); /* 边框稍微加粗 */
+            width: 12.5rem; height: 12.5rem;
+            border: 1px solid rgba(250, 249, 246, 0.25);
+            outline: 6px solid rgba(250, 249, 246, 0.06);
             border-radius: 50%;
             object-fit: cover;
-            transition: transform var(--transition-speed);
-            box-shadow: 0 6px 25px rgba(0,0,0,0.5);
-            margin-bottom: 1rem;
+            transition: transform .4s var(--ease-out), border-color .4s var(--ease-out);
+            margin-bottom: 1.1rem;
+        }
+        .brand-name {
+            font-family: var(--sans); font-weight: 600; color: var(--paper);
+            font-size: 1.15rem; letter-spacing: 0.02em; display: block;
+        }
+        .brand-title {
+            font-family: var(--sans); font-weight: 400; color: rgba(250,249,246,.55);
+            font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; display: block; margin-top: .25rem;
         }
 
         @media (min-width: 992px) {
-            body {
-                padding-top: 0;
-                padding-left: var(--sidebar-width);
-            }
+            body { padding-top: 0; padding-left: var(--sidebar-width); }
 
             .navbar {
-                position: fixed;
-                top: 0;
-                left: 0;
-                display: flex;
-                flex-direction: column; /* 确保垂直排列 */
-                width: var(--sidebar-width);
-                height: 100vh;
-                background-color: var(--sidebar-bg);
+                position: fixed; top: 0; left: 0;
+                display: flex; flex-direction: column;
+                width: var(--sidebar-width); height: 100vh;
+                background-color: var(--ink);
                 text-align: center;
-                box-shadow: 4px 0 15px rgba(0,0,0,0.1);
-                /* 增加内边距让布局更舒展 */
-                padding-top: 3rem; 
-                padding-bottom: 3rem;
+                border-right: 1px solid rgba(250,249,246,.08);
+                padding-top: 3rem; padding-bottom: 2rem;
             }
-
-            .navbar .container-fluid {
-                display: flex;
-                flex-direction: column;
-                padding: 0;
-                height: 100%;
-                justify-content: flex-start; /* 内容从上往下排列 */
+            .navbar::after {
+                content: ''; position: absolute; left: 0; bottom: 0;
+                width: 100%; height: 5px; background: var(--accent);
             }
-
-            .navbar-brand { 
-                padding: 0; 
-                margin-bottom: 2rem; /* 头像和菜单之间的间距 */
-            }
-
-            .navbar-brand .img-profile:hover {
-                transform: scale(1.03);
-                border-color: var(--accent-color);
-            }
-
-            .navbar-collapse {
-                display: flex !important;
-                flex-direction: column;
-                width: 100%;
-                flex-grow: 0; /* 防止撑满 */
-            }
-
-            .navbar-nav {
-                flex-direction: column !important; /* 强制垂直列表 */
-                width: 100%;
-            }
-
-            .nav-item {
-                width: 100%;
-            }
-
+            .navbar .container-fluid { display: flex; flex-direction: column; padding: 0; height: 100%; justify-content: flex-start; }
+            .navbar-brand { padding: 0; margin-bottom: 2.2rem; }
+            .navbar-brand .img-profile:hover { transform: scale(1.04); border-color: var(--accent); }
+            .navbar-collapse { display: flex !important; flex-direction: column; width: 100%; flex-grow: 0; }
+            .navbar-nav { flex-direction: column !important; width: 100%; }
+            .nav-item { width: 100%; }
             .nav-link {
-                padding: 1.2rem 2rem; /* 增加点击区域 */
-                color: rgba(255, 255, 255, 0.7);
+                padding: .85rem 2rem;
+                color: rgba(250, 249, 246, 0.55);
                 font-weight: 500;
                 text-transform: uppercase;
-                letter-spacing: 0.08rem;
-                font-size: 1.05rem; /* 字体稍微调大 */
-                border-left: 5px solid transparent;
-                transition: all 0.2s;
-                display: block; /* 块级元素占满一行 */
+                letter-spacing: 0.14em;
+                font-size: .82rem;
+                border-left: 3px solid transparent;
+                transition: all .25s var(--ease-out);
+                display: block;
             }
-
-            .nav-link:hover, .nav-link.active {
-                color: #fff;
-                background-color: rgba(255,255,255,0.08);
-                border-left-color: var(--accent-color);
-            }
+            .nav-link:hover { color: var(--paper); background-color: rgba(250,249,246,.05); }
+            .nav-link.active { color: var(--paper); background-color: rgba(250,249,246,.06); border-left-color: var(--accent); }
         }
 
         @media (max-width: 991.98px) {
-            body { padding-top: 80px; }
-            .navbar { background-color: var(--sidebar-bg); padding: 0.5rem 1rem;}
-            /* 移动端头像保持小尺寸，避免遮挡 */
-            .navbar-brand .img-profile { width: 3.5rem; height: 3.5rem; border: 2px solid rgba(255,255,255,0.3); margin-bottom: 0; }
+            body { padding-top: 76px; }
+            .navbar { background-color: var(--ink); padding: 0.5rem 1rem; border-bottom: 3px solid var(--accent); }
+            .navbar-brand .img-profile { width: 3rem; height: 3rem; outline: none; margin-bottom: 0; }
         }
 
         /* --------------------------------------------------
-           Content Sections
+           Sections
         -------------------------------------------------- */
         section.resume-section {
-            padding: 5rem 3rem;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border-bottom: 1px solid #f1f5f9;
+            padding: 5.5rem 3.5rem;
+            border-top: 1px solid var(--line);
         }
-        
-        @media(max-width: 768px) {
-            section.resume-section { padding: 3rem 1.5rem; }
-        }
+        section.resume-section:first-of-type { border-top: none; }
+        section.resume-section.bg-light { background-color: var(--paper-2) !important; }
+        @media(max-width: 768px) { section.resume-section { padding: 3.5rem 1.4rem; } }
 
-        section h2 {
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        
-        section h2::after {
-            content: '';
+        .kicker {
             display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--accent-color);
-            margin-top: 10px;
-            border-radius: 2px;
+            font-size: .78rem; font-weight: 600;
+            letter-spacing: .22em; text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: .9rem;
+        }
+        section h2 { font-size: clamp(2rem, 4vw, 2.7rem); margin-bottom: 2.6rem; position: relative; }
+        section h2::after {
+            content: ''; display: block; width: 100%; height: 1px;
+            background: var(--line); margin-top: 1.1rem;
+        }
+        section h2::before {
+            content: ''; position: absolute; bottom: -1px; left: 0;
+            width: 72px; height: 3px; background: var(--accent); z-index: 1;
+        }
+        h3.sub-head {
+            font-size: 1.05rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+            color: var(--ink-3); margin: 3rem 0 1.6rem;
         }
 
         /* --------------------------------------------------
-           About & Intro
+           About
         -------------------------------------------------- */
         .subheading {
-            font-family: 'Roboto', sans-serif;
+            font-family: var(--sans);
             text-transform: uppercase;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1.05rem;
+            letter-spacing: .06em;
+            color: var(--accent);
             margin-bottom: 1.5rem;
         }
+        .contact-lines { color: var(--ink-3); font-size: 1.05rem; }
+        .contact-lines i { color: var(--accent); width: 1.4rem; }
 
-        .interest-tag {
-            background-color: #f1f5f9;
-            color: #475569;
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            font-family: 'Roboto', sans-serif;
-            margin-bottom: 0.6rem;
-            margin-right: 0.4rem;
-            display: inline-block;
-            transition: all 0.2s;
-            border: 1px solid #e2e8f0;
+        .stat-strip {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+            margin: 2.5rem 0 3rem;
         }
-        .interest-tag:hover {
-            background-color: var(--sidebar-bg);
-            color: #fff;
-            border-color: var(--sidebar-bg);
-            transform: translateY(-2px);
+        .stat-cell { padding: 1.6rem 1.2rem; border-left: 1px solid var(--line); }
+        .stat-cell:first-child { border-left: none; padding-left: 0; }
+        .stat-num { font-family: var(--sans); font-weight: 700; font-size: 2.3rem; letter-spacing: -0.02em; color: var(--ink); line-height: 1.1; }
+        .stat-num sup { font-size: 1.2rem; color: var(--accent); }
+        .stat-label { font-family: var(--sans); font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin-top: .35rem; }
+        @media(max-width: 768px) {
+            .stat-strip { grid-template-columns: repeat(2, 1fr); }
+            .stat-cell:nth-child(3) { border-left: none; padding-left: 0; }
+            .stat-cell { padding: 1.2rem .9rem; }
         }
+
+        .dir-block { border-top: 1px solid var(--line); padding: 1.4rem 0; }
+        .dir-block:first-of-type { border-top: none; padding-top: 0; }
+        .dir-title { font-family: var(--sans); font-weight: 600; font-size: 1.08rem; color: var(--ink); margin-bottom: .3rem; }
+        .dir-title i { color: var(--accent); margin-right: .5rem; }
+        .dir-subs { font-size: .98rem; color: var(--ink-3); }
+        .dir-subs span + span::before { content: '·'; margin: 0 .55rem; color: var(--accent); font-weight: 700; }
+
+        .list-awards li { margin-bottom: .4rem; }
 
         .social-icons a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            height: 3.5rem;
-            width: 3.5rem;
-            background-color: #334155;
-            color: #fff !important;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            transition: transform 0.2s, background-color 0.2s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: inline-flex; align-items: center; justify-content: center;
+            height: 3.1rem; width: 3.1rem;
+            background-color: var(--ink); color: var(--paper) !important;
+            border-radius: 50%; font-size: 1.25rem; margin-right: .8rem;
+            transition: background-color .25s var(--ease-out), transform .25s var(--ease-out);
         }
+        .social-icons a:hover { background-color: var(--accent); transform: translateY(-4px); }
 
-        .social-icons a:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-5px);
+        .recruit-box {
+            background: var(--paper-2);
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+            padding: 1.6rem 1.8rem;
         }
+        .recruit-box h5 { font-weight: 700; color: var(--ink); }
+        .recruit-box h5 i { color: var(--accent); }
 
         /* --------------------------------------------------
-           News Section (Timeline Style)
+           News timeline
         -------------------------------------------------- */
         .news-box {
-            max-height: 550px;
-            overflow-y: auto;
-            background: #fff;
-            padding: 10px 20px;
-            border-radius: 8px;
-            /* Minimalist Scrollbar */
-            scrollbar-width: thin;
-            scrollbar-color: #cbd5e1 transparent;
+            max-height: 560px; overflow-y: auto;
+            background: var(--paper);
+            padding: 1.6rem 1.8rem;
+            border: 1px solid var(--line); border-radius: 10px;
+            scrollbar-width: thin; scrollbar-color: #c9c5ba transparent;
         }
         .news-box::-webkit-scrollbar { width: 6px; }
-        .news-box::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 20px; }
-
-        .news-list {
-            position: relative;
-            padding-left: 20px;
-            border-left: 2px solid #e2e8f0;
-        }
-
-        .news-list li {
-            position: relative;
-            margin-bottom: 20px;
-            padding-left: 20px;
-        }
-
+        .news-box::-webkit-scrollbar-thumb { background-color: #c9c5ba; border-radius: 20px; }
+        .news-list { position: relative; padding-left: 22px; border-left: 1px solid var(--line); }
+        .news-list li { position: relative; margin-bottom: 18px; padding-left: 18px; }
         .news-list li::before {
-            content: '';
-            position: absolute;
-            left: -26px; /* Adjust based on border and padding */
-            top: 6px;
-            width: 10px;
-            height: 10px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            border: 2px solid #fff;
-            box-shadow: 0 0 0 2px #e2e8f0;
+            content: ''; position: absolute; left: -26px; top: 7px;
+            width: 9px; height: 9px; background: var(--paper);
+            border: 2px solid var(--accent); border-radius: 50%;
         }
-
         .news-date {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 700;
-            color: #334155;
-            background: #f1f5f9;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            margin-right: 10px;
-            vertical-align: middle;
+            font-weight: 600; color: var(--ink);
+            background: var(--paper-2); border: 1px solid var(--line);
+            padding: 1px 9px; border-radius: 4px;
+            font-size: .8rem; letter-spacing: .04em;
+            margin-right: 10px; vertical-align: middle;
         }
 
         /* --------------------------------------------------
-           Publications Enhanced (Larger Images)
+           Publications
         -------------------------------------------------- */
         .pub-card {
-            background: #fff;
-            border: 1px solid rgba(0,0,0,0.05);
+            background: var(--paper);
+            border: 1px solid var(--line);
             border-radius: 12px;
-            margin-bottom: 3rem;
-            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            margin-bottom: 2.2rem;
+            transition: transform .35s var(--ease-out), border-color .35s var(--ease-out), box-shadow .35s var(--ease-out);
             overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
-
         .pub-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-color: rgba(59, 130, 246, 0.3); /* Accent border on hover */
+            transform: translateY(-3px);
+            border-color: var(--ink-3);
+            box-shadow: 0 14px 30px -12px rgba(23, 26, 30, 0.18);
         }
-
         .pub-img-container {
-            width: 100%;
-            height: 100%;
-            min-height: 220px; /* Increased height */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #f8fafc;
-            border-right: 1px solid #f1f5f9;
-            overflow: hidden;
-            padding: 0;
+            width: 100%; height: 100%; min-height: 220px;
+            display: flex; align-items: center; justify-content: center;
+            background-color: var(--paper-2);
+            border-right: 1px solid var(--line);
+            overflow: hidden; padding: 0;
         }
+        .pub-img { width: 100%; height: 100%; object-fit: cover; }
+        .card-body { padding: 1.8rem 2rem; }
+        .pub-title { font-size: 1.18rem; font-weight: 600; letter-spacing: -0.01em; margin-bottom: .7rem; color: var(--ink); line-height: 1.35; }
+        .pub-authors { font-size: .98rem; color: var(--ink-2); margin-bottom: .6rem; }
+        .pub-authors b { color: var(--ink); border-bottom: 1px solid var(--accent); font-weight: 700; }
+        .pub-venue { font-size: .95rem; color: var(--ink-3); margin-bottom: 1.1rem; font-style: italic; }
 
-        .pub-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; 
-            transition: transform 0.6s ease;
-        }
-        
-        .pub-card:hover .pub-img {
-            transform: scale(1.03);
-        }
-
-        .card-body { padding: 2rem; }
-
-        .pub-title {
-            font-family: 'Roboto', sans-serif;
-            font-size: 1.4rem; 
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            color: #0f172a;
-            line-height: 1.3;
-        }
-
-        .pub-authors {
-            font-size: 1.05rem;
-            color: #475569;
-            margin-bottom: 0.8rem;
-        }
-
-        .pub-authors b {
-            color: #0f172a;
-            text-decoration: underline;
-            text-decoration-color: #94a3b8;
-            text-underline-offset: 3px;
-        }
-
-        .pub-venue {
-            font-size: 1rem;
-            color: #64748b;
-            margin-bottom: 1.2rem;
-            font-style: italic;
-        }
-        
-        .badge {
-            font-weight: 600;
-            padding: 0.45em 0.7em;
-            letter-spacing: 0.5px;
-            vertical-align: middle;
-        }
-        .badge-hot { background-color: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
-        .badge-oral { background-color: #e0f2fe; color: #075985; border: 1px solid #bae6fd; }
-        .badge-highlight { background-color: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
-        .text-bg-success { background-color: #dcfce7 !important; color: #166534 !important; border: 1px solid #bbf7d0; }
+        .badge { font-weight: 600; padding: .4em .7em; letter-spacing: .4px; vertical-align: middle; font-style: normal; }
+        .badge-hot { background-color: #f7e8e4; color: #8c3b2a; border: 1px solid #ecd3ca; }
+        .badge-oral { background-color: var(--accent-soft); color: var(--accent-ink); border: 1px solid rgba(14,92,63,.25); }
+        .badge-highlight { background-color: #f4eedd; color: #77602a; border: 1px solid #e6dcc2; }
+        .text-bg-success { background-color: var(--accent-soft) !important; color: var(--accent-ink) !important; border: 1px solid rgba(14,92,63,.25); }
 
         .pub-links a {
-            font-family: 'Roboto', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            padding: 6px 16px;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            border-radius: 50px; /* Pill shape */
-            background-color: #fff;
-            border: 1px solid #cbd5e1;
-            color: #475569;
+            font-family: var(--sans);
+            font-size: .76rem; font-weight: 600; letter-spacing: .05em;
+            display: inline-flex; align-items: center; gap: .35rem;
+            padding: 6px 15px; margin-right: 8px; margin-bottom: 8px;
+            border-radius: 50px;
+            background-color: transparent;
+            border: 1px solid #cfccc2;
+            color: var(--ink-2);
             text-transform: uppercase;
-            transition: all 0.2s;
+            transition: all .25s var(--ease-out);
         }
+        .pub-links a:hover { background-color: var(--ink); color: var(--paper); border-color: var(--ink); }
 
-        .pub-links a:hover {
-            background-color: #1e293b;
-            color: #fff;
-            border-color: #1e293b;
-            text-decoration: none;
-        }
+        .github-badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+        .github-badges img { height: 21px; opacity: .85; transition: opacity .2s; }
+        .github-badges img:hover { opacity: 1; }
 
-        .github-badges {
-            margin-top: 12px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-        .github-badges img {
-            height: 22px;
-            opacity: 0.9;
-            transition: opacity 0.2s;
-        }
-        .github-badges img:hover { opacity: 1.0; }
-        
         .bibtex-box {
-            background-color: #f1f5f9;
-            color: #334155;
-            padding: 1rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            margin-top: 15px;
-            font-family: 'Courier New', monospace;
+            background-color: var(--paper-2);
+            color: var(--ink-2);
+            padding: 1rem; border: 1px solid var(--line); border-radius: 6px;
+            font-size: .82rem; margin-top: 14px;
+            font-family: 'SFMono-Regular', 'Courier New', monospace;
             white-space: pre-wrap;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
         }
-        
+
+        /* Image fallback tile (when local figure is unavailable) */
+        .img-fallback {
+            width: 100%; height: 100%; min-height: 220px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: repeating-linear-gradient(45deg, var(--paper-2), var(--paper-2) 12px, #eae7df 12px, #eae7df 24px);
+            color: var(--ink-3); gap: .6rem;
+        }
+        .img-fallback i { font-size: 2rem; color: #b6b1a4; }
+        .img-fallback span { font-family: var(--sans); font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; }
+
         /* --------------------------------------------------
-           Activities
+           Grants / Teaching
+        -------------------------------------------------- */
+        .grant-list { border-top: 1px solid var(--line); }
+        .grant-row {
+            display: grid; grid-template-columns: 190px 1fr auto; gap: 1.2rem; align-items: baseline;
+            padding: 1.05rem .2rem;
+            border-bottom: 1px solid var(--line);
+            transition: background-color .25s var(--ease-out), padding-left .25s var(--ease-out);
+        }
+        .grant-row:hover { background-color: var(--accent-soft); padding-left: .8rem; }
+        .grant-period { font-family: var(--sans); font-weight: 600; font-size: .88rem; letter-spacing: .03em; color: var(--accent-ink); white-space: nowrap; }
+        .grant-title { color: var(--ink); font-size: 1.02rem; }
+        .grant-title small { display: block; color: var(--ink-3); font-size: .88rem; }
+        .grant-role {
+            font-family: var(--sans); font-size: .74rem; font-weight: 600;
+            letter-spacing: .08em; text-transform: uppercase;
+            color: var(--ink-3); border: 1px solid var(--line); border-radius: 50px;
+            padding: 4px 12px; white-space: nowrap;
+        }
+        .grant-role.pi { color: var(--accent-ink); border-color: rgba(14,92,63,.4); }
+        @media(max-width: 768px) {
+            .grant-row { grid-template-columns: 1fr; gap: .3rem; }
+        }
+
+        .course-row { border-top: 1px solid var(--line); padding: 1.5rem 0; display: grid; grid-template-columns: 1fr; gap: .3rem; }
+        .course-row:first-of-type { margin-top: .5rem; }
+        .course-name { font-family: var(--sans); font-weight: 600; font-size: 1.12rem; color: var(--ink); }
+        .course-meta { font-family: var(--sans); font-size: .85rem; letter-spacing: .04em; color: var(--ink-3); }
+
+        /* --------------------------------------------------
+           Services
         -------------------------------------------------- */
         .service-card {
-            background: #fff;
-            padding: 2.5rem;
+            background: var(--paper);
+            padding: 2rem 2.2rem;
             border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            border: 1px solid var(--line);
             height: 100%;
+            transition: border-color .3s var(--ease-out);
         }
+        .service-card:hover { border-color: var(--ink-3); }
         .service-card h4 {
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-            color: #1e293b;
-            font-weight: 700;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 12px; margin-bottom: 18px;
+            color: var(--ink); font-weight: 600; font-size: 1.1rem;
         }
-        .list-group-item {
-            border: none;
-            padding: 0.6rem 0;
-            font-size: 1.05rem;
-            color: #475569;
-        }
+        .service-card h4 i { color: var(--accent); margin-right: .5rem; }
+        .list-group-item { border: none; padding: .5rem 0; font-size: 1rem; color: var(--ink-2); background: transparent; }
+        .list-group-item i { color: var(--accent); }
         .badge-conf {
             display: inline-block;
-            background-color: #f8fafc;
-            color: #334155;
-            border: 1px solid #cbd5e1;
-            padding: 8px 14px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-radius: 6px;
-            margin-bottom: 8px;
-            font-family: 'Roboto', sans-serif;
-            transition: all 0.2s;
+            background-color: transparent;
+            color: var(--ink-2);
+            border: 1px solid #cfccc2;
+            padding: 7px 14px;
+            font-size: .85rem; font-weight: 600; letter-spacing: .04em;
+            border-radius: 6px; margin-bottom: 8px;
+            font-family: var(--sans);
+            transition: all .25s var(--ease-out);
         }
-        .badge-conf:hover {
-            background-color: #e2e8f0;
-            color: #0f172a;
+        .badge-conf:hover { background-color: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+        /* --------------------------------------------------
+           Back to top
+        -------------------------------------------------- */
+        #backToTop {
+            position: fixed; right: 1.6rem; bottom: 1.6rem; z-index: 1500;
+            width: 3rem; height: 3rem; border-radius: 50%;
+            background: var(--ink); color: var(--paper);
+            border: none; display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; opacity: 0; pointer-events: none;
+            transition: opacity .3s var(--ease-out), background-color .3s var(--ease-out);
+            box-shadow: 0 6px 18px rgba(23,26,30,.25);
+        }
+        #backToTop.show { opacity: 1; pointer-events: auto; }
+        #backToTop:hover { background: var(--accent); }
+
+        /* --------------------------------------------------
+           Reveal animations
+        -------------------------------------------------- */
+        .reveal { opacity: 0; filter: blur(8px); transform: translateY(16px); transition: opacity .7s var(--ease-out), filter .7s var(--ease-out), transform .7s var(--ease-out); }
+        .reveal.in { opacity: 1; filter: blur(0); transform: translateY(0); }
+        .pub-img { transform: scaleY(0); transform-origin: top; transition: transform .5s ease-out .1s; }
+        .pub-img.in { transform: scaleY(1); }
+        .img-fallback { opacity: 0; transition: opacity .5s ease-out .1s; }
+        .img-fallback.in { opacity: 1; }
+
+        ::-webkit-scrollbar { width: 9px; }
+        ::-webkit-scrollbar-track { background: var(--paper); }
+        ::-webkit-scrollbar-thumb { background: #cfccc2; border-radius: 8px; border: 2px solid var(--paper); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--ink-3); }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal, .pub-img, .img-fallback { transition: none !important; opacity: 1 !important; filter: none !important; transform: none !important; }
         }
     </style>
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#sideNav" data-bs-offset="0" tabindex="0">
+    <div id="scroll-progress"></div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="sideNav">
@@ -479,7 +436,9 @@
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
                 <span class="d-block d-lg-none">Yang Liu</span>
                 <span class="d-none d-lg-block">
-                    <img class="img-fluid img-profile rounded-circle mx-auto" src="./img/ArYanR2026.png" alt="Yang Liu Profile">
+                    <img class="img-fluid img-profile rounded-circle mx-auto" src="./img/ArYanR2026.png" alt="Yang Liu Profile" id="profilePhoto">
+                    <span class="brand-name mt-2">Yang Liu 刘阳</span>
+                    <span class="brand-title">Associate Professor · SYSU</span>
                 </span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -490,7 +449,9 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Introduction</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#news">News</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#publications">Publications</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#activities">Activities</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#teaching">Teaching</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
                 </ul>
             </div>
         </div>
@@ -502,72 +463,86 @@
         <!-- About Section -->
         <section class="resume-section" id="about">
             <div class="resume-section-content">
-                <h1 class="mb-2 display-4 fw-bold">Yang Liu <span class="h3 fw-light text-secondary">(刘阳)</span></h1>
+                <span class="kicker">Introduction</span>
+                <h1 class="mb-2" style="font-size: clamp(2.4rem, 5vw, 3.4rem);">Yang Liu <span class="h3 fw-light" style="color: var(--ink-3);">(刘阳)</span></h1>
                 <div class="subheading mb-4">
                     Associate Professor @ Sun Yat-sen University (SYSU)
                 </div>
-                
-                <div class="row mb-5">
+
+                <div class="row mb-2">
                     <div class="col-lg-8">
-                        <p class="lead mb-4" style="color: #475569;">
-                            <i class="fas fa-envelope me-2" style="color:#64748b;"></i> liuy856@mail.sysu.edu.cn<br>
-                            <i class="fas fa-university me-2" style="color:#64748b;"></i> School of Computer Science and Engineering, SYSU, Guangzhou, China<br>
-                            <i class="fas fa-users me-2" style="color:#64748b;"></i> HCP-Lab
+                        <p class="lead contact-lines mb-4">
+                            <i class="fas fa-envelope"></i> <a href="mailto:liuy856@mail.sysu.edu.cn">liuy856@mail.sysu.edu.cn</a><br>
+                            <i class="fas fa-university"></i> School of Computer Science and Engineering, SYSU, Guangzhou, China<br>
+                            <i class="fas fa-users"></i> Core Member of <a href="http://www.sysu-hcp.net/" target="_blank" class="fw-bold">HCP-Lab</a> (led by Prof. Liang Lin)
                         </p>
                         <p class="mb-4 text-justify">
-                            I am currently an Associate Professor at the <a href="http://sdcs.sysu.edu.cn/" target="_blank">School of Computer Science and Engineering</a>, <a href="http://www.sysu.edu.cn/" target="_blank">Sun Yat-sen University (SYSU)</a>. I am a core member of the <a href="http://www.sysu-hcp.net/" target="_blank" class="fw-bold text-dark">HCP Lab</a> led by Prof. Liang Lin. 
-                            I obtained my Ph.D. degree from Xidian University in 2019. 
+                            I am currently an Associate Professor at the <a href="http://sdcs.sysu.edu.cn/" target="_blank">School of Computer Science and Engineering</a>, <a href="http://www.sysu.edu.cn/" target="_blank">Sun Yat-sen University (SYSU)</a>, and a core member of the <a href="http://www.sysu-hcp.net/" target="_blank">HCP Lab</a> led by Prof. Liang Lin. I obtained my Ph.D. degree from Xidian University in 2019. My research primarily focuses on <b>Embodied AI &amp; Robotics</b>, <b>Self-evolving Agents</b>, and <b>Multimodal Perception &amp; Reasoning</b>.
                         </p>
                         <p class="mb-4 text-justify">
-                            My research primarily focuses on <b>Embodied AI</b>, <b>Multimodal Spatial Perception & Reasoning</b>, and <b>Causal Inference</b>. 
-                            I have published over 50 papers in top-tier conferences and journals, including TPAMI, TIP, TMECH, TKDE, CVPR, ICCV, and ACM MM. 
-                            Several of my works have been selected as Oral/Highlight presentations or ESI Highly Cited Papers. 
-                            I also authored the book <i>"Multimodal Large Models: The New Paradigm of Artificial General Intelligence"</i>.
-                            <a href="https://cse.sysu.edu.cn/teacher/LiuYang" target="_blank" class="badge bg-secondary text-decoration-none ms-2"><i class="fas fa-language"></i> 中文主页</a>
+                            I have published <b>60+ papers</b> in top-tier venues including TPAMI, TIP, TKDE, CVPR, ICCV, ICML, NeurIPS and ACM MM — among them <b>7</b> first/corresponding-author journal papers were selected as <b>ESI Highly Cited / Hot Papers</b>, <b>5</b> conference papers as <b>Oral / Highlight</b>, and one ranked <b>Top-2</b> on the TMech Popular Articles list. I co-authored the monograph <i>《多模态大模型：新一代人工智能技术范式》</i> (<b>10,000+ copies sold</b>, adopted as a textbook by <b>20+ universities</b>; English edition published by <b>Springer</b>, 2026). As PI, I lead 10+ projects funded by NSFC (General / Young / Key sub-project), Pengcheng Laboratory, Huawei, and provincial foundations. I serve as an <b>Associate Editor of Pattern Recognition</b>, as associate editor-in-chief of the group standard <i>《具身智能多模态感知与模式识别技术要求》</i>, and as a co-initiator of the self-evolving embodied agent operating system <a href="https://phy-agent-os.net/" target="_blank"><b>PhyAgentOS</b></a>.
+                            <a href="https://cse.sysu.edu.cn/teacher/LiuYang" target="_blank" class="badge text-bg-success text-decoration-none ms-2"><i class="fas fa-language"></i> 中文主页</a>
                         </p>
-                        
-                        <div class="alert alert-light border shadow-sm rounded-3" style="background-color: #f8fafc; border-color: #e2e8f0;" role="alert">
-                            <h5 class="alert-heading fw-bold" style="color: #1e293b;"><i class="fas fa-bullhorn me-2 text-warning"></i>Recruiting</h5>
-                            <hr>
-                            <p class="mb-0 small" style="color: #334155;">
-                                Our team has sufficient computing resources and robotic hardware. 
-                                I am looking for self-motivated <b>Ph.D. students, Master students, and Research Interns</b> who are interested in Embodied AI and Multimodal Reasoning. 
-                                Please email me your CV if interested.
+
+                        <div class="recruit-box" role="alert">
+                            <h5><i class="fas fa-bullhorn me-2"></i>Recruiting 招生信息</h5>
+                            <hr style="border-color: var(--line);">
+                            <p class="mb-2 small" style="color: var(--ink-2);">
+                                <b>Fall 2027 admission (预推免):</b> students with AI algorithm experience or robot software/hardware development background are preferred — please email me your self-introduction, transcripts and CV.
+                            </p>
+                            <p class="mb-2 small" style="color: var(--ink-2);">
+                                <b>Research interns</b> are recruited year-round <b>with stipend</b>; priority is given to those who plan to stay for graduate study.
+                            </p>
+                            <p class="mb-0 small" style="color: var(--ink-2);">
+                                Our team offers <b>sufficient computing resources and robotic hardware</b> (quadruped robots, mobile manipulators, Franka arms) to support embodied AI research.
                             </p>
                         </div>
                     </div>
-                    <div class="col-lg-4 text-center d-flex align-items-center justify-content-center">
+                    <div class="col-lg-4 text-center d-flex align-items-center justify-content-center mt-4 mt-lg-0">
                         <!-- Visitor Map -->
-                        <div style="transform: scale(0.9); border: 1px solid #e2e8f0; padding: 10px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                        <div style="border: 1px solid var(--line); padding: 10px; border-radius: 10px; background: var(--paper);">
                             <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=300&t=m&d=Ng_LP0UrQP5gWGJEym9UVNi8Up0eZ-cQXq9wH1Me7Bg"></script>
                         </div>
                     </div>
                 </div>
 
+                <!-- Stats -->
+                <div class="stat-strip">
+                    <div class="stat-cell"><div class="stat-num">60<sup>+</sup></div><div class="stat-label">Publications</div></div>
+                    <div class="stat-cell"><div class="stat-num">7</div><div class="stat-label">ESI Highly Cited / Hot</div></div>
+                    <div class="stat-cell"><div class="stat-num">5</div><div class="stat-label">Oral / Highlight Papers</div></div>
+                    <div class="stat-cell"><div class="stat-num">10<sup>+</sup></div><div class="stat-label">Grants as PI / Lead</div></div>
+                </div>
+
                 <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <h3 class="h4 mb-3 pb-2 border-bottom">Research Interests</h3>
-                        <div>
-                            <span class="interest-tag"><i class="fas fa-robot me-1"></i> Embodied AI</span>
-                            <span class="interest-tag"><i class="fas fa-cubes me-1"></i> 3D Spatial Reasoning</span>
-                            <span class="interest-tag"><i class="fas fa-map-marked-alt me-1"></i> VL Navigation</span>
-                            <span class="interest-tag"><i class="fas fa-brain me-1"></i> Causal Inference</span>
-                            <span class="interest-tag"><i class="fas fa-hand-paper me-1"></i> Robotic Manipulation</span>
+                    <div class="col-md-7 mb-4">
+                        <h3 class="sub-head" style="margin-top: 0;">Research Interests</h3>
+                        <div class="dir-block">
+                            <div class="dir-title"><i class="fas fa-robot"></i>Embodied AI &amp; Robotics</div>
+                            <div class="dir-subs"><span>Vision-Language Navigation</span><span>Robotic Manipulation</span><span>Robot System Integration &amp; Infrastructure</span></div>
+                        </div>
+                        <div class="dir-block">
+                            <div class="dir-title"><i class="fas fa-cubes"></i>Multimodal Perception &amp; Reasoning</div>
+                            <div class="dir-subs"><span>3D Spatial Reasoning</span><span>Math / Physics Problem Reasoning</span><span>Visual Question Answering</span></div>
+                        </div>
+                        <div class="dir-block">
+                            <div class="dir-title"><i class="fas fa-brain"></i>Causal Inference</div>
+                            <div class="dir-subs"><span>Causal Representation Learning</span><span>Causal Reinforcement Learning</span><span>Counterfactual Reasoning</span></div>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-4">
-                        <h3 class="h4 mb-3 pb-2 border-bottom">Selected Awards</h3>
-                        <ul class="fa-ul list-awards" style="color: #475569;">
-                            <li><span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>Outstanding Teaching Achievement of Guangdong Province (2nd Prize), 2025</li>
-                            <li><span class="fa-li"><i class="fas fa-award text-secondary"></i></span>Excellent Author of PHE (Publishing House of Electronics Industry), 2024</li>
-                            <li><span class="fa-li"><i class="fas fa-award text-secondary"></i></span>CCF ChinaSoft 2023 Challenge (3rd Prize)</li>
-                            <li><span class="fa-li"><i class="fas fa-award text-secondary"></i></span>3rd Guangdong Province Young CS Academic Show (1st Prize), 2023</li>
-                            <li><span class="fa-li"><i class="fas fa-award text-secondary"></i></span>National Scholarship for PhD Students, 2018</li>
+                    <div class="col-md-5 mb-4">
+                        <h3 class="sub-head" style="margin-top: 0;">Selected Awards</h3>
+                        <ul class="fa-ul list-awards" style="color: var(--ink-2);">
+                            <li><span class="fa-li"><i class="fas fa-trophy" style="color: var(--accent);"></i></span>Outstanding Teaching Achievement Award of Guangdong Postgraduate Education Society (2nd Prize, rank 1), 2025</li>
+                            <li><span class="fa-li"><i class="fas fa-award" style="color: var(--ink-3);"></i></span>Excellent Author of PHE (Publishing House of Electronics Industry), 2024</li>
+                            <li><span class="fa-li"><i class="fas fa-award" style="color: var(--ink-3);"></i></span>3rd Guangdong Young CS Academic Show (1st Prize), 2023</li>
+                            <li><span class="fa-li"><i class="fas fa-award" style="color: var(--ink-3);"></i></span>CCF ChinaSoft 2023 Robotic Foundation Model &amp; Embodied Intelligence Challenge (Excellence Award, Advisor), 2023</li>
+                            <li><span class="fa-li"><i class="fas fa-award" style="color: var(--ink-3);"></i></span>National Scholarship for Ph.D. Students, 2018</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="social-icons mt-4">
+                <div class="social-icons mt-3">
                     <a href="https://scholar.google.com/citations?user=l0z2QNQAAAAJ&hl=en" target="_blank" title="Google Scholar">
                         <i class="ai ai-google-scholar"></i>
                     </a>
@@ -587,7 +562,8 @@
         <!-- News Section -->
         <section class="resume-section bg-light" id="news">
             <div class="resume-section-content">
-                <h2 class="mb-5">News</h2>
+                <span class="kicker">Updates</span>
+                <h2>News</h2>
                 <div class="news-box shadow-sm">
                     <ul class="list-unstyled news-list">
                         <li><span class="news-date">2026-07</span> One paper is accepted by <b>IEEE TKDE</b>!</li>
@@ -634,10 +610,11 @@
         <!-- Publications Section -->
         <section class="resume-section" id="publications">
             <div class="resume-section-content">
-                <h2 class="mb-5">Publications</h2>
+                <span class="kicker">Selected Works</span>
+                <h2>Publications</h2>
 
                 <!-- Books -->
-                <h3 class="mb-4 text-muted" style="border-left: 5px solid #1e293b; padding-left: 15px;">Books</h3>
+                <h3 class="sub-head">Books</h3>
                 
                 <!-- Book 1 -->
                 <div class="pub-card card">
@@ -691,7 +668,7 @@
                 </div>
 
                 <!-- Open Source Framework -->
-                <h3 class="mb-4 mt-5 text-muted" style="border-left: 5px solid #1e293b; padding-left: 15px;">Open-source Framework</h3>
+                <h3 class="sub-head">Open-source Framework</h3>
                  <div class="pub-card card">
                     <div class="row g-0 align-items-center h-100">
                         <div class="col-md-4 text-center">
@@ -705,15 +682,14 @@
                                 <p class="card-text text-muted small mb-3">PhyAgentOS is a self-evolving embodied AI operating system built on agentic workflows..</p>
                                 <div class="pub-links">
                                     <a href="https://github.com/PhyAgentOS/PhyAgentOS" target="_blank"><i class="fab fa-github"></i> Project</a>
-                                    <a href="https://phy-agent-os.net/" target="_blank"><i class="fab fa-github"></i>Website</a>
-                                    <a href="https://arxiv.org/pdf/2607.16636" target="_blank"><i class="fab fa-github"></i>Technical Report</a>
+                                    <a href="https://phy-agent-os.net/" target="_blank"><i class="fas fa-globe"></i> Website</a>
+                                    <a href="https://arxiv.org/pdf/2607.16636" target="_blank"><i class="fas fa-file-pdf"></i> Report</a>
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/PhyAgentOS/PhyAgentOS?style=social">
                                     <img alt="GitHub forks" src="https://img.shields.io/github/forks/PhyAgentOS/PhyAgentOS?style=social">
                                     <img alt="GitHub issues" src="https://img.shields.io/github/issues/PhyAgentOS/PhyAgentOS?style=social">
                                 </div>
-                                <div class="collapse bibtex-box" id="bibCausal"></div>
                             </div>
                         </div>
                     </div>
@@ -753,7 +729,7 @@
                 </div>
 
                 <!-- Papers List -->
-                <h3 class="mb-4 mt-5 text-muted" style="border-left: 5px solid #1e293b; padding-left: 15px;">Selected Papers</h3>
+                <h3 class="sub-head">Selected Papers</h3>
     <!-- Paper: PAOS -->
                 <div class="pub-card card">
                     <div class="row g-0 align-items-center h-100">
@@ -840,7 +816,7 @@
                                 <div class="pub-links">
                                     <a href="https://arxiv.org/pdf/2606.24797" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                                     <a href="https://hcplab-sysu.github.io/EG-VQA/" target="_blank"><i class="fas fa-globe"></i> Project</a>
-                                    <a href="#bibRoVLA" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
+                                    <a href="#bibEG-VQA" data-bs-toggle="collapse"><i class="fas fa-quote-right"></i> BibTex</a>
                                 </div>
                                 <div class="github-badges">
                                     <img alt="GitHub stars" src="https://img.shields.io/github/stars/HCPLab-SYSU/EG-VQA?style=social">
@@ -2048,7 +2024,7 @@
                 </div>
 
                 <!-- PhD Thesis -->
-                <h3 class="mb-4 mt-5 text-muted" style="border-left: 5px solid #1e293b; padding-left: 15px;">PhD Dissertation</h3>
+                <h3 class="sub-head">PhD Dissertation</h3>
                 <div class="pub-card card">
                     <div class="row g-0 align-items-center h-100">
                         <div class="col-md-4 text-center">
@@ -2079,33 +2055,141 @@
             </div>
         </section>
 
-        <!-- Activities Section -->
-        <section class="resume-section bg-light" id="activities">
+        <!-- Projects Section -->
+        <section class="resume-section" id="projects">
             <div class="resume-section-content">
-                <h2 class="mb-5">Academic Services</h2>
-                
-                <div class="row g-4">
+                <span class="kicker">Funding</span>
+                <h2>Research Projects</h2>
+                <div class="grant-list">
+                    <div class="grant-row">
+                        <span class="grant-period">2026.01 – 2029.12</span>
+                        <span class="grant-title">General Program, National Natural Science Foundation of China (NSFC)<small>国家自然科学基金面上项目</small></span>
+                        <span class="grant-role pi">PI 主持</span>
+                    </div>
+                    <div class="grant-row">
+                        <span class="grant-period">2025.01 – 2029.12</span>
+                        <span class="grant-title">Key Program, National Natural Science Foundation of China (NSFC)<small>国家自然科学基金重点项目</small></span>
+                        <span class="grant-role">Sub-project Lead 课题负责人</span>
+                    </div>
+                    <div class="grant-row">
+                        <span class="grant-period">2025.05 – 2026.05</span>
+                        <span class="grant-title">"Open Competition" Program, Pengcheng Laboratory<small>鹏城国家实验室“揭榜挂帅”项目</small></span>
+                        <span class="grant-role pi">PI 主持</span>
+                    </div>
+                    <div class="grant-row">
+                        <span class="grant-period">2025.06 – 2026.06</span>
+                        <span class="grant-title">Technical Collaboration Project with Huawei<small>华为技术合作项目</small></span>
+                        <span class="grant-role">Co-PI 联合主持</span>
+                    </div>
+                    <div class="grant-row">
+                        <span class="grant-period">2025.01 – 2027.12</span>
+                        <span class="grant-title">General Program, Guangdong Basic and Applied Basic Research Foundation<small>广东省自然科学基金面上项目</small></span>
+                        <span class="grant-role pi">PI 主持</span>
+                    </div>
+                    <div class="grant-row">
+                        <span class="grant-period">2023.01 – 2025.12</span>
+                        <span class="grant-title">General Program, Guangdong Basic and Applied Basic Research Foundation<small>广东省自然科学基金面上项目</small></span>
+                        <span class="grant-role pi">PI 主持</span>
+                    </div>
+                    <div class="grant-row">
+                        <span class="grant-period">2023.04 – 2025.04</span>
+                        <span class="grant-title">Guangzhou Science and Technology Program<small>广州市科技计划项目</small></span>
+                        <span class="grant-role pi">PI 主持</span>
+                    </div>
+                    <div class="grant-row">
+                        <span class="grant-period">2021.01 – 2023.12</span>
+                        <span class="grant-title">Young Scientists Fund (C), National Natural Science Foundation of China (NSFC)<small>国家自然科学基金青年项目</small></span>
+                        <span class="grant-role pi">PI 主持</span>
+                    </div>
+                    <div class="grant-row">
+                        <span class="grant-period">2021.01 – 2023.12</span>
+                        <span class="grant-title">General Program, Guangdong Basic and Applied Basic Research Foundation<small>广东省自然科学基金面上项目</small></span>
+                        <span class="grant-role pi">PI 主持</span>
+                    </div>
+                    <div class="grant-row">
+                        <span class="grant-period">2020.08 – 2022.08</span>
+                        <span class="grant-title">General Program, China Postdoctoral Science Foundation<small>博士后科学基金面上项目</small></span>
+                        <span class="grant-role pi">PI 主持</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teaching Section -->
+        <section class="resume-section bg-light" id="teaching">
+            <div class="resume-section-content">
+                <span class="kicker">Courses</span>
+                <h2>Teaching</h2>
+                <div class="course-row">
+                    <div class="course-name">Advanced Algebra <span style="color: var(--ink-3); font-weight: 400;">高等代数</span></div>
+                    <div class="course-meta">Undergraduate core course (required) · 本科生核心课程、专业必修课</div>
+                </div>
+                <div class="course-row">
+                    <div class="course-name">Multimodal Large Models: Principles and Applications <span style="color: var(--ink-3); font-weight: 400;">多模态大模型原理与应用</span></div>
+                    <div class="course-meta">Undergraduate elective · Course Lead · 本科生专业选修课、课程负责人 · <a href="https://hcplab-sysu.github.io/Book-of-MLM/" target="_blank">Course Resources 课程资料</a></div>
+                </div>
+                <div class="course-row" style="border-bottom: 1px solid var(--line);">
+                    <div class="course-name">Generative Artificial Intelligence <span style="color: var(--ink-3); font-weight: 400;">生成式人工智能</span></div>
+                    <div class="course-meta">Graduate elective · 研究生专业选修课</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="resume-section" id="services">
+            <div class="resume-section-content">
+                <span class="kicker">Community</span>
+                <h2>Academic Services</h2>
+
+                <div class="row g-4 mb-4">
                     <div class="col-md-6">
                         <div class="service-card">
-                            <h4 class="h5">Reviewer for Journals</h4>
+                            <h4><i class="fas fa-pen-nib"></i>Editorial Board</h4>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> IEEE Trans. on Pattern Analysis and Machine Intelligence (TPAMI)</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> IEEE Trans. on Image Processing (TIP)</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> IEEE Trans. on Neural Networks and Learning Systems (TNNLS)</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> IEEE Trans. on Cybernetics</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> International Journal of Computer Vision (IJCV)</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> ACM Trans. on Multimedia Computing Comm. and Applications</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> Pattern Recognition (PR)</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> Neural Networks</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> Information Fusion</li>
-                                <li class="list-group-item bg-transparent"><i class="fas fa-check me-2 text-success"></i> Advanced Science</li>
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> <b>Pattern Recognition</b> (CAS Q1 Top) — Associate Editor</li>
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> <b>Embodied Intelligence and Robotics</b> — Associate Editor</li>
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> <b>Embodied Intelligence</b> — Associate Editor</li>
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> Associate Editor-in-Chief, group standard <i>《具身智能多模态感知与模式识别技术要求》</i></li>
                             </ul>
                         </div>
                     </div>
-                    
                     <div class="col-md-6">
                         <div class="service-card">
-                            <h4 class="h5">PC Member / Reviewer for Conferences</h4>
+                            <h4><i class="fas fa-users"></i>Society Memberships</h4>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> Senior Member, China Society of Image and Graphics (CSIG); Committee Member, Visualization &amp; Cognitive Computing Technical Committee</li>
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> Committee Member, Embodied Intelligence Technical Committee, Chinese Association of Automation (CAA)</li>
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> Committee Member, Multimedia TC &amp; Visual Big Data TC, CSIG</li>
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> Inaugural Committee Member, Embodied Intelligence TC, Chinese Institute of Command and Control (CICC)</li>
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> Executive Committee Member, ACM Guangzhou Chapter</li>
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> Youth Working Committee Member &amp; Deputy Secretary-General of Vision TC, Guangdong Society of Image and Graphics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="service-card">
+                            <h4><i class="fas fa-book-open"></i>Reviewer for Journals</h4>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> IEEE Trans. on Pattern Analysis and Machine Intelligence (TPAMI)</li>
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> IEEE Trans. on Image Processing (TIP)</li>
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> IEEE Trans. on Neural Networks and Learning Systems (TNNLS)</li>
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> IEEE Trans. on Cybernetics</li>
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> International Journal of Computer Vision (IJCV)</li>
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> ACM Trans. on Multimedia Computing Comm. and Applications</li>
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> Pattern Recognition (PR)</li>
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> Neural Networks</li>
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> Information Fusion</li>
+                                <li class="list-group-item"><i class="fas fa-check me-2"></i> Advanced Science</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="service-card">
+                            <h4><i class="fas fa-globe"></i>PC Member / Reviewer for Conferences</h4>
                             <div class="d-flex flex-wrap gap-2 mb-3">
                                 <span class="badge-conf">CVPR</span>
                                 <span class="badge-conf">ICCV</span>
@@ -2120,7 +2204,7 @@
                                 <span class="badge-conf">UbiComp</span>
                                 <span class="badge-conf">ISWC</span>
                             </div>
-                            <div class="alert alert-secondary small mb-0 border-0">
+                            <div class="small" style="color: var(--ink-3); border-top: 1px solid var(--line); padding-top: 12px;">
                                 <i class="fas fa-info-circle me-1"></i> Serving as Program Committee member or Reviewer for top-tier computer vision and machine learning conferences.
                             </div>
                         </div>
@@ -2131,21 +2215,64 @@
 
     </div>
 
+    <!-- Back to top -->
+    <button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Script to close navbar on mobile click -->
+
     <script>
+        // Close navbar on mobile click
         const navLinks = document.querySelectorAll('.js-scroll-trigger');
         const menuToggle = document.getElementById('navbarResponsive');
         const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle:false});
-        
         navLinks.forEach((l) => {
             l.addEventListener('click', () => {
                 if (window.getComputedStyle(document.querySelector('.navbar-toggler')).display !== 'none') {
                     bsCollapse.hide();
                 }
             });
+        });
+
+        // Scroll progress bar + back-to-top visibility
+        const progressBar = document.getElementById('scroll-progress');
+        const backToTop = document.getElementById('backToTop');
+        function onScroll() {
+            const max = document.documentElement.scrollHeight - window.innerHeight;
+            progressBar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+            backToTop.classList.toggle('show', window.scrollY > 600);
+        }
+        window.addEventListener('scroll', onScroll, {passive: true});
+        onScroll();
+        backToTop.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+
+        // Scroll reveal: blur + rise for blocks, scale-y reveal for figures
+        document.querySelectorAll('.pub-card, .service-card, .grant-row, .course-row, .news-box, .stat-cell, .dir-block, .recruit-box, .social-icons')
+            .forEach(el => el.classList.add('reveal'));
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, {threshold: 0.12});
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        const ioImg = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ioImg.unobserve(e.target); } });
+        }, {threshold: 0.2});
+        document.querySelectorAll('.pub-img').forEach(el => ioImg.observe(el));
+
+        // Graceful fallback when a local figure is unavailable
+        function imgFallback(img) {
+            const tile = document.createElement('div');
+            tile.className = 'img-fallback';
+            if (img.id === 'profilePhoto') { tile.style.borderRadius = '50%'; tile.style.width = '12.5rem'; tile.style.height = '12.5rem'; tile.style.minHeight = '0'; tile.style.margin = '0 auto 1.1rem'; }
+            tile.innerHTML = '<i class="fas fa-image"></i><span>' + (img.alt || 'Figure') + '</span>';
+            img.replaceWith(tile);
+            ioImg.observe(tile);
+        }
+        document.addEventListener('error', (e) => {
+            if (e.target.tagName === 'IMG' && !e.target.dataset.fbk) { e.target.dataset.fbk = 1; imgFallback(e.target); }
+        }, true);
+        document.querySelectorAll('.pub-img, #profilePhoto').forEach(img => {
+            if (img.complete && img.naturalWidth === 0 && !img.dataset.fbk) { img.dataset.fbk = 1; imgFallback(img); }
         });
     </script>
 
